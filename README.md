@@ -1,104 +1,447 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Blog it
 
-Welcome USER_NAME,
+![Main Mockup]()
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. The last update to this file was: **July 2, 2021**
+[Link to Live Website]()
 
-## Gitpod Reminders
+[GitHub Repo](https://github.com/)
+Happy blogging!
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+*** 
 
-A blue button should appear to click: _Make Public_,
+## About  
+Welcome to Blog It, a webapp to helps bloggers with similar interest interact with each other! 
+This is a Python Flask app using MongoDB and Flask Mail to produce a social blogging  application.
 
-Another blue button should appear to click: _Open Browser_.
+Blog it brings bloggers together and allows them to interact and share their interests in similar subjects! 
+Anyone can write on Blog It. Thought-leaders, journalists, experts, and individuals with unique perspectives can share their thinking here.
+The application lets users create a profile that allows them to add their  details, add photos, let other users know when they last posted,how many followers they have add comments both  and private message each other.
+The site offers the additional functionality; reset passwords, change passwords contact us, editing and deleting comments, backend validation. Please look at the [features](#features) section for a more detailed description. 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+ 
+## Index – Table of Contents
 
-A blue button should appear to click: _Make Public_,
+- [User Experience (UX)](#user-experience--ux-)
+- [Strategy](#strategy)
+  * [User Stories](#user-stories)
+- [Scope](#scope)
+- [Structure](#structure)
+- [Database](#database)
+- [Validation](#validation)
+  * [Backend Validation](#backend-validation)
+  * [Front End Validation](#front-end-validation)
+- [Security](#security)
+- [Features](#features)
+- [Design](#design)
+- [Skeleton](#skeleton)
+  * [Layout](#layout)
+- [Surface](#surface)
+  * [Typography](#typography)
+  * [Call to Action](#call-to-action)
+  * [Imagery](#imagery)
+- [Technologies](#technologies)
+    + [Languages & Frameworks](#languages---frameworks)
+    + [Front End](#front-end)
+    + [Backend](#backend)
+    + [Helpers](#helpers)
+    + [Planning](#planning)
+  * [Flask](#flask)
+    + [Testing Tools](#testing-tools)
+    + [Technology Configuration](#technology-configuration)
+    + [MongoDB](#mongodb)
+  * [Flask Mail](#flask-mail)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  * [Configuration](#configuration)
+    + [Local Environment](#local-environment)
+  * [Adding and Committing files](#adding-and-committing-files)
+  * [Deploying](#deploying)
+  * [Forking](#forking)
+  * [Cloning](#cloning)
+- [Known Bugs](#known-bugs)
+- [Acknowledgements](#acknowledgements)
+  * [Credit](#credit)
+      - [People](#people)
+      - [Additional Testers](#additional-testers)
+      - [Tools and Docs](#tools-and-docs)
+  * [Code:](#code-)
+  * [Content:](#content-)
+  * [Inspiration & Research:](#inspiration---research-)
 
-Another blue button should appear to click: _Open Browser_.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+*** 
 
-To log into the Heroku toolbelt CLI:
+## User Experience (UX)
+## Strategy
+Every has got something interesting to say or even full depth of knowledge about a particular subject.
+Blog it enables people to blog about anything and everything and also provides users with a way to communicate with others and attain information about a particular subject.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### User Stories 
 
-------
+#### New User
+* I would like to find out what the site is about
+* i would like to explore blogposts written by other bloggers without registering
+* I would like to easily register 
+* I would like to be able to add my profile details
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+#### Existing User
+* I want to be able to sign in and out easily
+* I would like to be able to delete my account
+* i would like to be able to reset my password incase i forgot my previous password
+* I would like to be able to add/read/edit and delete my blogposts.
+* I would like to be able to check out other user's profiles.
+* I would like to follow users that interest me.
+* I would like other users to follow me.
+* I would like to see the blogs by other people to decide which blog I would like to read.
+* I would like to easily add new blogs.
+* I would like to receive any feedback in comments or messages on the site for new posts.
+* I would like to leave a comment for blogs that interest me. I understand I’ll have to sign in to do this.
+* I would like to be able to upload a profile photo or change my profile photo. 
+i.  If I don’t have a profile photo, I'd like to have a choice of placeholder. 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+## Features
+ 
+### Existing Features
+- User Registration: allows new users to create an account so they can log in.
+- User Log-in: allows existing users to log in using their username or email and password. Passwords are hashed for security reasons. Log-in is required to read , post your own blogs and give feedback. 
+- User Profiles: allow users to tell others about themselves, provide a name,description.date stamp,followers. 
+- A user must be logged in to edit their own profile. A user cannot edit someone else's profile. 
+- A user must be logged in to view messages and interact with other members.
+- Password reset page- allows users to reset their password incase they had forgotten it.
+- Expore: This allows both non registered and registered users to explore blogposts in the system that all the users are writting.
+- Search: allows a registed bloggers  to search for blogposts by simple words and more complex phrases
+- Logout : allows a user to securely logout of the page.
+- Pagination- user can search other blogposts and users using pagination of old and new posts.
+- User comments: users can interact with each other by leaving comments on eachothers blogposts.
+- Followers: users are able to follow othe users and choose to filter the blog post list on the home page to include only those from users they follow
+- live translation feature for blogposts written in other languages.
+- Personalised timeline that shows all the blogposts a user is interested in.
+- Admin Area/Meet the Team: introduces users to the admin team. If user is an admin, they will also see reports by users that may require admin action. 
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+### Features Left to Implement
+- Allow users to upload their own cover image for a blog.
+- Allow bloggers to rate other people's blogposts.
+- Allow bloggers to search for blogposts based on other users' average rating.
+- Allow admins to block/suspend users when necessary.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+***
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+## Technologies
+#### Languages & Frameworks 
+* HTML5 - Mark-up language using semantic structure.
+* CCS3 - Cascading style sheet used to style.
+* JavaScript - Programming language.  
+* Python - Programming language
+* [Flask](#flask) - Framework + Extensions
+* [Materialize](https://materializecss.com/) - CSS Framework for structure, buttons, and some styling
+* [jQuery](https://jquery.com/) - Materialize initialising
+* Gitpod.io - for writing the code. Using the command line for committing and pushing to Git Hub
+* GitHub - hosting repositories
+* GIT - Pushing code to repositories
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+#### Front End
+* [Google fonts](https://fonts.google.com/)  - for the font
+* [Font Awesome](https://fontawesome.com/) - for icons used
+* [Canva](https://www.canva.com/)- Designing the background, default image and Icon
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+#### Backend 
+* [MongoDB](https://www.mongodb.com/)
+* [Heroku](https://dashboard.heroku.com/)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+#### Helpers
+* [Beautifier](https://beautifier.io/) - for helping to keep code tidy 
+* [Random Key Gen](https://randomkeygen.com/) - to generate a random secret key
+* [Power Mapper](https://www.powermapper.com/) to check for browser compatibility
+* [Temp Mail](https://temp-mail.org/en/)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+#### Planning
+[lucid chart](https://lucidchart/app/dashboard/) - for planning of site flow, creating wire frames and general mind mapping
 
-------
+### Flask
+The application was built using the [Flask](https://flask.palletsprojects.com/en/1.1.x/) Framework which is reliant on the [Jinja](https://www.palletsprojects.com/p/jinja/) templating language. The application was written in python. 
 
-## FAQ about the uptime script
+I used the following Extensions:
+* [Flask Mail](https://pythonhosted.org/Flask-Mail/) - For emailing users
+* [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) - For interacting with the MongoDB database
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/utils/) - For providing security’s, password_hash, check_password_hash
 
-**Why have you added this script?**
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+#### Testing Tools
+* [HTML Validator](https://validator.w3.org/) - checking the validity of code
+* [CSS Validator](https://validator.w3.org/) - checking the validity of code
+* [JSHint](https://jshint.com/)- Testing and checking JS.  - checking for errors in code
+* [Pep8 Online](http://pep8online.com/) - Testing and checking PEP8 compliance 
+* [Am I Responsive](http://ami.responsivedesign.is/#) - checking whether the site is responsive. 
+* [Internet Marketing Ninjas](https://www.internetmarketingninjas.com/online-spell-checker.php) - spell check
+* [Python Tutor](http://pythontutor.com/) - For function testing 
+* [Studio 3T](https://studio3t.com/) - Testing Database Schema 
+* [Regrex101](https://regex101.com/r/OnE0BG/1/) - Testing Regrex Patterns
+* DEV Tools - Lighthouse
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+***
+#### Technology Configuration
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+#### MongoDB 
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+[MongoDB](https://www.mongodb.com/) was used as the database to store the users details to set up MongoDB follow the steps below
 
-**So….?**
+* Sign up to MongoDB
+* Create a new shared Cluster
+* Select a Cloud provider and region (I used AWS and Ireland)
+* For free use  m0 cluster tier
+* Give your cluster a name
+* Go to collections and add a database
+* Go to database access and add a username and password
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+Connecting - via application
+* Go back to the cluster overview
+* Click the CONNECT button.
+* Select 'connect your application'
+* Select your language/ driver (I used Python 3.6 or later)
+* Copy the connection string and change the details. 
+* Set the cluster name, collection name, URI connection string and password as environmental - see [Configuration](#Configeration) to set up your application configurations
+ 
 
-**Can I opt out?**
+### Flask Mail 
+I have chosen to use Gmail as my mail provider alongside [Flask Mail](https://pythonhosted.org/Flask-Mail/) to send mail to users from within the app. 
+You will need to ensure you set your email provider up  to Allow less secure apps otherwise Gmail will block you being able to send/receive emails through the application.  
+You will also need to enable IMAP as well.  You can find some helpful tips [Flask Mail Help](https://www.twilio.com/blog/2018/03/send-email-programmatically-with-gmail-python-and-flask.html)
+I have used Gmail’s smtp server.  -  see [Configuration](#Configeration) to set up your application configurations
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+***
 
-**Anything more?**
+## Testing 
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+[TESTING DOC ](docs/testing.md)
 
----
+Please see the testing document for Testing
 
-Happy coding!
+
+***
+
+
+## Deployment 
+
+### Configuration 
+Beneath your imports you will need to configure your app.py file.  You will need to import your local env.py for local environments.  For [configuration for Heroku](#deploying). 
+
+Configure as follows:
+
+        if os.path.exists('env.py'):
+            import env
+
+
+        app = Flask(__name__)
+
+        app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
+        app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+        app.secret_key = os.environ.get('SECRET_KEY')
+     
+
+        app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
+        app.config['MAIL_PORT'] = os.environ.get('MAIL_PORT')
+        app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL')
+        app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+        app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+        app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
+
+        mongo = PyMongo(app)
+        mail = Mail(app)
+
+To start your application, you will need to user the following at the bottom of your app.py file. You will need to ensure that debug=False prior to deployment.
+
+        if __name__ == '__main__':
+            app.run(host=os.environ.get('IP'),
+                    port=int(os.environ.get('PORT')),
+                    debug=False)
+
+You will need to add a Procfile and ensure your requirements.txt are up to date. 
+In your root folder in the terminal type - touch Procfile -  this will create a Procfile
+Add the following with the following 
+    echo web: python app.py
+
+To install the requirements.txt use the following command in the terminal command line
+    pip3 install -r requirements.txt
+
+
+
+#### Local Environment
+Create env.py file in the same file system.  In your route folder type - touch env.py - to create the file. 
+Your virtual configurations should look similar to this. You will need to create a SECRET_KEY and input the IP and PORT settings. I used [Random Key Gen](https://randomkeygen.com/).
+
+        import os
+
+        # App config
+        os.environ.setdefault("IP", "0.0.0.0")
+        os.environ.setdefault("PORT", "5000")
+        os.environ.setdefault("SECRET_KEY", "<Your secret key>")
+
+        # MongoDB config
+        os.environ.setdefault(
+            "MONGO_URI", "mongodb+srv://<user>:<password>@<project>.af8bz.mongodb.net/<database>?retryWrites=true&w=majority")
+        os.environ.setdefault("MONGO_DBNAME", "<database>")
+
+   
+        # Mail config
+        os.environ.setdefault('MAIL_SERVER', 'smtp.gmail.com')
+        os.environ.setdefault("MAIL_PORT", "465")
+        os.environ.setdefault("MAIL_USE_SSL", "True")
+        os.environ.setdefault("MAIL_USE_TLS", "False")
+        os.environ.setdefault("MAIL_USERNAME", "<Your email>")
+        os.environ.setdefault("MAIL_PASSWORD", "<Your email password>")
+        os.environ.setdefault("MAIL_DEFAULT_SENDER", "<Your email>")
+
+
+
+### Adding and Committing files
+
+To add files to the repository, take the following steps
+
+In the command line type -
+        git add .  
+        git commit -m "This is being committed"
+        git push
+
+To add all new files or modified file use " ."  - To add a single file, use the pathway to the file eg .index.html  or assets/css/style.css
+When committing make sure your comments are clear about what changes have been made. 
+Pushing will send your work to the repository
+
+
+### Deploying 
+Requirements for deploying:
+* MongoDB Account
+* Heroku Account
+* Email account
+
+Deploying to [Heroku](https://dashboard.heroku.com/)
+
+* You will need to sign up to [Heroku](https://dashboard.heroku.com/)
+* Once logged in click the create new app button
+* Select the region closest to you and give the APP a name
+* Set your deployment method to 'GitHub'
+* Connect to GitHub and login
+* Search for the repository you wish to deploy from
+* You will need to head to settings and click 'Config Vars'
+    * You will now need to set up your Configuration Vars the same way as you did for your env.py
+![Config Vars](docs/images/config.png)    
+* Make sure you have set up your Procfile and you have updated the requirements.txt prior to deploying    
+* Click the deploy tab and go to manual deploy
+* Select the branch you wish to deploy and deploy the application
+* Once it is deployed you will be able to view the app
+* You can set it to automatically deploy every time you push to the repository by enabling the Automatic deploys
+
+
+### Forking
+
+Forking the GitHub Repository
+
+By forking the GitHub Repository, you can make a copy of the original repository in your own GitHub account.  This means we can view or make changes without making the changes affecting the original.
+
+* Log into GitHub and locate the GitHub Repository.
+* At the top of the Repository there is a "Fork" button about the "Settings" button on the menu.
+* You should now have a new copy of the original repository in your own GitHub account.
+* You will need to install the requirements.txt using the following command the command line
+        pip3 install -r requirements.txt
+* You will need to set up your local environments and key value pairs for deployment
+
+### Cloning 
+
+Making a Local Clone
+
+* Log into your GitHub then find the gitpod repository
+* Under the repository name there is a button that says, "Clone or download". Click on this button.
+* If cloning with HTTPS "Clone with HTTPS", copy this link.
+* Open Gitbash
+* Change the current working directory to the location where you want the cloned directory to be.
+* Type git clone, and then paste the URL you copied earlier.
+
+        $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+        Press - Enter- Your local clone will be created.
+        $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+                > Cloning into `CI-Clone`...
+                > remote: Counting objects: 10, done.
+                > remote: Compressing objects: 100% (8/8), done.
+                > remove: Total 10 (delta 1), reused 10 (delta 1)
+                > Unpacking objects: 100% (10/10), done.
+[Click Here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository) for more info on cloning. 
+
+You will need to install the requirements.txt using the following command the command line
+        pip3 install -r requirements.txt
+* You will need to set up your local environments and key value pairs for deployment and running the application in your local environment. 
+
+
+## Deployment
+
+This project is hosted on [Heroku](heroku.com). It's been deployed using the following steps:
+1. Sign up (new user) or sign in to Heroku account. _I already had an account from previous projects, so only needed to sign in._
+1. Click the button at the top right that says "New", select "Create new app" in the dropdown.
+1. Choose an app name. __Caution! This must be unique!__
+1. Select your region. _In my case, this is Europe._ 
+1. You'll be redirected to the Deploy tab of the new app.
+1. Go to Deployment method. Select your prefered deployment method. _As my code was already on Github, I chose the "Connect to Github" option. The following steps will be specific to this option._
+1. Sign in to your Github account to allow Heroku access to repositories.
+1. Search for your repo name. If you can't remember the specific spelling of the name, leave the input field blank and click "Search" to get a list of all your repos.
+1. When you've found your repo in the list, click the "Connect" button.
+1. You now have the choice to enable automatic deploys or deploy manually. 
+1. Your project will need to contain the following in order for Heroku to deploy it:
+    - a Procfile: this specifies the commands that are executed by the app on startup. You can use a Procfile to declare a variety of process types, including:
+        - Your app’s web server
+        - Multiple types of worker processes
+        - A singleton process, such as a clock
+        - Tasks to run before a new release is deployed.
+
+        _In the case of this project, the Procfile contains only a single line:_
+        ```
+        echo web: python app.py
+        ```
+    - a requirements.txt file. This tells Heroku which dependencies need to be installed in order for the project to run. It's created by using the command `pip install` + the name of any dependencies you have (for example, Flask needs to be installed for this project) in the terminal of your prefered editor, followed by the command `pip freeze > requirements.txt` which will write the installed dependencies to a text file which Heroku then installs using `pip install requirements.txt`. 
+1. Go to settings in the Heroku tab. Click "Reveal Config Vars". Add the relevant environment variables you've used in your project to the Config Vars so Heroku can access them. Specifically, for this particular project, that means the following Config Vars were added: 
+    - DEBUG (set to False to turn off Debug mode in the deployed version. Locally, in development, this variable was set to True.)
+    - IP
+    - MONGO_DBNAME
+    - MONGO_URI
+    - PORT
+    - SECRET_KEY
+1. Check the activity tab. The two most recent items in the list should read "Deployed" and "Build Succeeded" in their status. 
+1. Click "Open App" in the top right side if this is the case, this will take you to the live site of the [Blog It]().
+
+### To run this project locally:
+1. Clone the [Github repo]() using the green "Clone or download" button. Several options are available here.
+1. Open the project in your prefered editor.
+1. Create a virtual environment using the command `python -m venv envname`, replacing "envname" with the name you want to give this environment. (More information on virtual environments: https://docs.python.org/3/library/venv.html)
+1. Open the virtual environment:
+    - Windows Cmd Shell: `<envname>\Scripts\Activate`
+    - Posix/Linux bash Shell:
+    `$ source <envname>/bin/activate`
+1. Install the dependencies using the command `pip install -r requirements.txt`
+1. Set up environment variables. There are different ways to do this  depending on your system and/or editor. In my editor of choice, VS Code running on Windows, you can do this in the .vscode directory that's generated for every project. This will contain a settings.json file. Add the following to the json dictionary: 
+    ``` 
+    "terminal.integrated.env.windows": 
+    {
+        "MONGO_DBNAME": "theDatabaseName",
+        "MONGO_URI": "theDatabaseURL",
+        "SECRET_KEY": "YourSecretKeyHere"
+    },
+    ``` 
+1. Run the project in your terminal using the command `python app.py` (like pip, for Unix-based systems you may need to use `python3`).
+
+## Credits
+
+### Content
+
+
+### Media
+
+### Acknowledgements
+
+- I based the layout for the site on this [DIY_]().
