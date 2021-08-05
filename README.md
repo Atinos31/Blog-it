@@ -172,6 +172,7 @@ I used the following Extensions:
 * [Flask Mail](https://pythonhosted.org/Flask-Mail/) - For emailing users
 * [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) - For interacting with the MongoDB database
 * [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/utils/) - For providing security’s, password_hash, check_password_hash
+* flask-wtf - (https://flask-wtf.readthedocs.io/en/0.15.x/) -  to enable and ease out the process of designing forms in the app
 
 
 #### Testing Tools
