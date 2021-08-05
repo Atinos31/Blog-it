@@ -16,6 +16,7 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+# function to render the main page
 @app.route("/get_blogs")
 def get_blogs():
     blogs = mongo.db.blogs.find()
