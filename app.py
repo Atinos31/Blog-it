@@ -21,6 +21,23 @@ mongo = PyMongo(app)
 def get_blogs():
     blogs = mongo.db.blogs.find()
     return render_template("blogs.html", blogs=blogs)
+ 
+
+# create a fake user
+@app.route("/index")
+def index():
+    user = {'username': 'Sandra'}
+    posts = [
+        {
+            'author': {'username': 'Grace'},
+            'body': 'Beautiful day in brussels!'
+        },
+        {
+            'author': {'username': 'Lexi'},
+            'body': 'The big bang theory is pretty cool!' 
+        }
+    ]
+    return render_template("index.html", title='Home', user=user, posts=posts)
 
 
 if __name__ == "__main__":
