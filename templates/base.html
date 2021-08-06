@@ -11,21 +11,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/avatar-icon.png')}}">
-    <title>BlogIt</title>
+    {% if title %}
+    <title>{{ title }} - BlogIt</title>
+    {% else %}
+    <title> Welcome to BlogIt</title>
+    {% endif %}
 </head>
 <body>
  <header>
     <!-- desktop nav -->
-     
+     <div>
 		<nav class="nav-extended text-shadow light-blue darken-4">
 			<div class="nav-wrapper">
-				<a href="{{ url_for('index') }}" class="brand-logo">
+				<a href="/index" class="brand-logo">
                     <i class="fas fa-blog"> BlogIt</i>
                     </a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 				<ul class="right hide-on-med-and-down">
 					<li><a href="/index">Home</a></li>
-					<li><a href="{ url_for('get_blogs') }}">Explore</a></li>
+                 
+					<li><a href="{{ url_for('login') }}">Explore</a></li>
 					<li><a href="#">Profile</a></li>
 					<li><a href="{{ url_for('login') }}">Log In</a></li>
 					<li><a href="#">Log Out</a></li>
@@ -47,10 +52,11 @@
 	</header>
 
           
- </header>
+
  <main>
     {% block content %}
     {% endblock %}
+  
  </main>
 
 <footer class="page-footer text-shadow light-blue darken-3 ">

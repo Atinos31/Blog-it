@@ -4,7 +4,7 @@
 
   <div class="row">
       <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-          <div class="card-panel grey lighten-4 z-depth-4 ">
+          <div class="card-panel grey lighten-4 z-depth-4 hoverable ">
               <!-- username-->
               <div class="row">
                   <div class="input-field col s12">
@@ -15,7 +15,7 @@
                 </div>
                 <div class="input-field col s12">
                     <i class="fas fa-envelope prefix dark-blue-text text-darken-4"></i>
-                    <input id="email" type="email" class="validate" minlength="5" maxlength="15" pattern="^[a-zA-z0-9]{5,15}$" class="validate" required>
+                    <input id="email" type="email" name="email" class="validate" title="Please fill in a valid email" required>
                     <label for="email">Email</label>
                 </div>
                 <!-- password-->
