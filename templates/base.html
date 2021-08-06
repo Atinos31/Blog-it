@@ -19,28 +19,30 @@
      
 		<nav class="nav-extended text-shadow light-blue darken-4">
 			<div class="nav-wrapper">
-				<a href="{{ url_for('index') }}" class="brand-logo">BlogIt</a>
+				<a href="{{ url_for('index') }}" class="brand-logo">
+                    <i class="fas fa-blog"> BlogIt</i>
+                    </a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 				<ul class="right hide-on-med-and-down">
 					<li><a href="/index">Home</a></li>
-					<li><a href="#">Explore</a></li>
-					<li><a href="{{ url_for('get_blogs') }}">Profile</a></li>
+					<li><a href="{ url_for('get_blogs') }}">Explore</a></li>
+					<li><a href="#">Profile</a></li>
 					<li><a href="{{ url_for('login') }}">Log In</a></li>
 					<li><a href="#">Log Out</a></li>
-					<li><a href="{{ url_for('get_blogs') }}">Register</a></li>
+					<li><a href="{{ url_for('register') }}">Register</a></li>
 				</ul>
 			</div>
 		</nav>
 
       <!-- mobile side nav -->
 		<ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align light-blue-text text-darken 4">BlogIt</h4></li>
-            <li><a href="{{ url_for('get_blogs') }}">Home</a></li>
-            <li><a href="#">Explore</a></li>
+            <li><h4 class="center-align light-blue-text text-darken 4"> <i class="fas fa-blog"> BlogIt</i></h4></li>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{ url_for('get_blogs') }}">Explore</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="{{ url_for('login') }}">Log In</a></li>
             <li><a href="#">Log In</a></li>
-            <li><a href="#">Register</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
 		</ul>
 	</header>
 
@@ -51,15 +53,15 @@
     {% endblock %}
  </main>
 
-<footer class="page-footer text-shadow light-blue darken-4">
+<footer class="page-footer text-shadow light-blue darken-3 ">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">BlogIt</h5>
+                <h5 class="white-text"> <i class="fas fa-blog"> BlogIt</i></h5>
                 <p class="grey-text text-lighten-4">It's easy and free to post your thinking on any topic and connect with millions of readers..</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text"> Quick Links</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Log In</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!"> Register</a></li>
@@ -69,10 +71,10 @@
               </div>
             </div>
           </div>
-          <div class="footer-copyright">
+          <div class="footer-copyright  blue darken-4">
             <div class="container">
             © 2014 Copyright Sandra Atino
-            <a class="grey-text text-lighten-4 right" href="#!">Quick Links</a>
+            <a class="grey-text text-lighten-4 right" href="#!">Privacy Policy</a>
             </div>
           </div>
         </footer>

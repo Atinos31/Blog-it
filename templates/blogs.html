@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>
-    I am extending the base template
+    blogs
 </h2>
     {% for blog in blogs %}
-    {{ blog.blog_name }}<br>
-    {{ blog.category_name }}<br>
-    {{ blog.blog_description }}<br>
-    {{ blog.date_written }}<br>
-    {{ blog.written_by }}<br>
+        {{ blog.blog_name }}<br>
+        {{ blog.category_name }}<br>
+        {{ blog.blog_description }}<br>
+        {{ blog.date_written }}<br>
+        {{ blog.written_by }}<br>
     {% endfor %}
     
 {% endblock %}

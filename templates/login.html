@@ -2,9 +2,10 @@
 {% block content %}
   <h3 class="center-align">Sign In</h3>
 
+
   <div class="row">
       <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
-          <div class="card-panel">
+          <div class="card-panel grey lighten-4">
               <!-- username -->
               <div class="row">
                   <div class="input-field col s12">
@@ -20,16 +21,15 @@
                         <input id="password" name="password" type="password" minlength="5" maxlength="15"
                             pattern="^[a-zA-z0-9]{5,15}$" class="validate" required>
                         <label for="password">Password</label>
+                    </div>
+                    <div>
                         <p>
                             <label>
                                 <input type="checkbox" />
                                 <span>Remember me</span>
                             </label>
                         </p>
-
                     </div>
-                  
-        
                 </div>
                 <!-- Sign in -->
                 <div class="row">
