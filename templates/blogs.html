@@ -3,27 +3,24 @@
 <h2>
     blogs
 </h2>
-    {% for blog in blogs %}
-        {{ blog.blog_name }}<br>
-        {{ blog.category_name }}<br>
-        {{ blog.blog_description }}<br>
-        {{ blog.date_written }}<br>
-        {{ blog.written_by }}<br>
-    {% endfor %}
+  
     
     <ul class="collapsible popout">
+        {% for blog in blogs %}
     <li>
-      <div class="collapsible-header white-text light-blue darken-4 text-shadow"><i class="fas fa-caret-down"></i>First</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
+      <div class="collapsible-header white-text light-blue darken-4 text-shadow">
+          <i class="fas fa-caret-down"></i>
+          <strong> {{ blog.category_name }}</strong>
+      </div>
+      <div class="collapsible-body">
+          <strong>{{ blog.blog_name }}</strong>
+          <p> {{ blog.blog_description }}</p>
+          <p><small>by {{ blog.author.username }} </small></p>
+          <p><small> <i>Published on</i> : {{ blog.published_date }}</small></p>
+        </div>
     <li>
-      <div class="collapsible-header  white-text light-blue darken-4 text-shadow"><i class="fas fa-caret-down"></i>Second</div>
-      <div class="collapsible-body "><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header  white-text light-blue darken-4 text-shadow"><i class="fas fa-caret-down"></i>Third</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
+    
+    {% endfor %}
   </ul>
         
 {% endblock %}
