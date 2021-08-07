@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>
-    blogs
+    Blogposts
 </h2>
   
     
@@ -10,13 +10,13 @@
     <li>
       <div class="collapsible-header white-text light-blue darken-4 text-shadow">
           <i class="fas fa-caret-down"></i>
-          <strong> {{ blog.category_name }}</strong>
+          <strong> {{ blog.blog_category }}</strong>
       </div>
       <div class="collapsible-body">
-          <strong>{{ blog.blog_name }}</strong>
+          <strong>{{ blog.blog_title }}</strong>
           <p> {{ blog.blog_description }}</p>
-          <p><small>by {{ blog.author.username }} </small></p>
-          <p><small> <i>Published on</i> : {{ blog.published_date }}</small></p>
+          <p><small>By {{ blog.author_id }} </small></p>
+          <p><small> <i>Published on</i>: {{ blog.published_date }}</small></p>
         </div>
     <li>
     

@@ -8,14 +8,40 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
+
 app = Flask(__name__)
-bp = Blueprint('blog', __name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+#dummy data for blogposts
+posts = [
+    {
+        'author': 'Grace Rock',
+        'title': 'Culture Shock',
+        'content': 'Cultural differences between different races',
+        'date_posted': 'August 07, 2021'        
+    },
+    {
+        'author': 'Mary Poppins',
+        'title': 'Data related careers',
+        'content': 'Data science is not your only career option',
+        'date_posted': 'August 08, 2020'
+    }
+]
+
+
+@app.route("/home")
+def home():
+    return render_template('home.html', posts=posts)
+
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
 
 @app.route("/")
@@ -24,23 +50,6 @@ mongo = PyMongo(app)
 def get_blogs():
     blogs = list(mongo.db.blogs.find())
     return render_template("blogs.html", blogs=blogs)
-
-
-"""# create a fake user')
-@app.route('/index')
-def index():
-    user = {'username': 'Stranger'}
-    posts = [
-        {
-            'author': {'username': 'Grace'},
-            'body': 'Beautiful day in brussels!'
-        },
-        {
-            'author': {'username': 'Lexi'},
-            'body': 'The big bang theory is pretty cool!'
-        }
-    ]
-    return render_template('index.html', title='Home', user=user, posts=posts)"""
 
 
 # create a register function
@@ -107,9 +116,8 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username,)
     return redirect(url_for("login"))
 
 
@@ -120,6 +128,7 @@ def logout():
     flash("You have been logged out!")
     session.pop("user")
     return redirect(url_for("login"))
+
 
 
 if __name__ == "__main__":

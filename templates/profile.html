@@ -2,15 +2,25 @@
 {% block content %}
 
 
-  <div class="row">
+ <div class="row">
       <div class="col s12 m8 offset-m2">
           <div class="card-panel">
-             <h3 class="center-align light-blue-text text-darken-4">
-                 {{ username }}'s Profile
-             </h3>
-          </div>   
+             <h5 class="center-align light-blue-text text-darken-4">
+                 Hi, {{ username }}
+             </h5>
+          </div>
       </div>
-  </div>
-
+ </div>
  
+  <ul class="collection">
+    <li class="collection-item avatar">
+      <img src="url_for('static', filename='profile_pics/defaultpic.jpg" alt="" class="circle">
+      <span class="title">{{username }}</span>
+      <p>about-me<br>
+        member_since
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  <!-- FORM HERE -->
+</div>
 {% endblock %}
