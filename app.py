@@ -1,6 +1,7 @@
 import os
 from flask import (
-    Flask, flash, render_template, redirect, request, session, url_for)
+    Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for)
+from werkzeug.exceptions import abort
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -8,6 +9,7 @@ if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
+bp = Blueprint('blog', __name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -27,7 +29,7 @@ def get_blogs():
 # create a fake use')
 @app.route('/index')
 def index():
-    user = {'username': 'Sandra'}
+    user = {'username': 'Stranger'}
     posts = [
         {
             'author': {'username': 'Grace'},
@@ -64,7 +66,7 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("index", username=session["user"]))
+        return redirect(url_for("login", username=session["user"]))
 
     return render_template("register.html")
 
@@ -97,7 +99,6 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
-
 
 
 if __name__ == "__main__":
