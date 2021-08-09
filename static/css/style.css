@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Roboto&display=swap');
 /* global styles*/
 .text-shadow{
     text-shadow: 3px 3px 3px rgba(0,0,0,0.6);
@@ -14,13 +14,23 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
-  main {
+
+.header{
+    font-family: 'Crimson Text', serif;
+    font-weight: 900;
+    font-size: 35px;
+}
+
+
+main {
     flex: 1 0 auto;
-  }
+}
 
 .flashes h4{
     line-height: 2;
 }
+
+
 
 /*--------main-------*/
 .content-section {

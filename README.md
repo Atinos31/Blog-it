@@ -247,14 +247,7 @@ Configure as follows:
         app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
         app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
         app.secret_key = os.environ.get('SECRET_KEY')
-     
-
-        app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
-        app.config['MAIL_PORT'] = os.environ.get('MAIL_PORT')
-        app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL')
-        app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-        app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-        app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
+    
 
         mongo = PyMongo(app)
         mail = Mail(app)
@@ -291,16 +284,6 @@ Your virtual configurations should look similar to this. You will need to create
         os.environ.setdefault(
             "MONGO_URI", "mongodb+srv://<user>:<password>@<project>.af8bz.mongodb.net/<database>?retryWrites=true&w=majority")
         os.environ.setdefault("MONGO_DBNAME", "<database>")
-
-   
-        # Mail config
-        os.environ.setdefault('MAIL_SERVER', 'smtp.gmail.com')
-        os.environ.setdefault("MAIL_PORT", "465")
-        os.environ.setdefault("MAIL_USE_SSL", "True")
-        os.environ.setdefault("MAIL_USE_TLS", "False")
-        os.environ.setdefault("MAIL_USERNAME", "<Your email>")
-        os.environ.setdefault("MAIL_PASSWORD", "<Your email password>")
-        os.environ.setdefault("MAIL_DEFAULT_SENDER", "<Your email>")
 
 
 
@@ -442,6 +425,8 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
 
 
 ### Media
+   - homepage image is from pexels.com by cottonbro 
+   [girl in a yellow jacket](https://www.pexels.com/photo/girl-in-yellow-jacket-holding-white-printer-paper-7595160/)
 
 ### Acknowledgements
 

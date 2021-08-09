@@ -1,23 +1,60 @@
 {% extends "base.html" %}
+{% block title %}Homepage{% endblock %}
+
 {% block content %}
-    <h3> Welcome to BlogIt </h2> 
-    <p>BlogIt is a place to write, read, and connect</p>
-    {% for post in posts %}
- <article class="media content-section">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="#">{{ post.author }}</a>
-      <small class="text-muted">{{ post.date_posted }}</small>
+<div class="homepage-wrapper">
+    <div class="homepage">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <h4 class="center-align">{{ message }}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith%}
+       
+    <div class="row">
+        <div class="col s12">
+            <h1 class="header flow-text">Welcome to BlogIt</h1>
+            <div class="card-image">
+                <img src="/static/images/blogger.jpg" class="responsive-img z-depth-3"
+                    alt="a girl-in-yellow-jacket-holding-white-printer-paper">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h2 class="flow-text"><i>BlogIt is a place to write, read, and connect.</i></h2>
+                    <p>The best ideas can change who we are.<br> BlogIt is where those ideas take shape, take off, and spark
+                        powerful conversations<br>
+                        It's easy and free to share your thoughts on any topic and connect with an audience.</p>
+                </div>
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header white-text teal lighten-2 text-shadow">
+                            <i class="fas fa-caret-down"></i>Our Story
+                        </div>
+                        <div class="collapsible-body"><span>
+                                <p><i>
+                                        We’re an open platform where many readers come to find insightful and dynamic
+                                        thinking.<br>
+                                        Here, expert and undiscovered voices alike dive into the heart of any topic and
+                                        bring new ideas to the surface.<br>
+                                        Our purpose is to spread these ideas and deepen understanding of the world.<br>
+                                        Create the space for your thoughts to take off by clicking the button below <i
+                                            class="fas fa-arrow-alt-circle-down 2x"></i>
+                                    </i>
+                                </p>
+                            </span></div>
+                    </li>
+                </ul>
+                <div class="card-action">
+                    <a href="{{ url_for('register')}}" class="btn-large text-shadow cyan right" type="submit"
+                        name="action"><i class="fas fa-angle-double-right right"></i>Get Started</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-    <p class="article-content">{{ post.content }}</p>
-  </div>
-</article>
-    {% endfor %}
-
-
-
-
-   
+    </div>
+    </div>
 {% endblock %}
-

@@ -21,8 +21,9 @@ mongo = PyMongo(app)
 posts = [
     {
         'author': 'Grace Rock',
-        'title': 'Culture Shock',
-        'content': 'Cultural differences between different races',
+        'category': 'Software Development',
+        'title': '7 Money Making Side Projects You Can Do As A Developer',
+        'content': '1- Ethincal hacking is more active side income than passive income. Personally, I haven’t ‘hacked’ anything yet. But over the past year, I’ve been doing a lot of security-related work and find that organizations are more vulnerable than we actually want to believe.',
         'date_posted': 'August 07, 2021'        
     },
     {
@@ -128,7 +129,6 @@ def logout():
     flash("You have been logged out!")
     session.pop("user")
     return redirect(url_for("login"))
-
 
 
 if __name__ == "__main__":
