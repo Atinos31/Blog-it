@@ -1,22 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>
-    Blogposts
-</h2>
+<h3>
+     Explore Recent Blogposts
+</h3>
   
     
     <ul class="collapsible popout">
         {% for blog in blogs %}
     <li>
-      <div class="collapsible-header white-text light-green darken-4 text-shadow">
+      <div class="collapsible-header white-text teal darken-4 text-shadow">
           <i class="fas fa-caret-down"></i>
-          <strong> {{ blog.blog_category }}</strong>
+          <strong> {{ blog.category }}</strong>
       </div>
       <div class="collapsible-body">
-          <strong>{{ blog.blog_title }}</strong>
-          <p> {{ blog.blog_description }}</p>
-          <p><small>By {{ blog.author_id }} </small></p>
+         <h3><strong>{{ blog.title }}</strong></h3>
+          <p> {{ blog.content }}</p>
+          <p><small> <i class="fas fa-user-circle"></i> {{ blog.author }} </small></p>
+          <p></p>
           <p><small> <i>Published on</i>: {{ blog.published_date }}</small></p>
+          <p><i class="fas fa-clock"></i>{{blog.time}} mins</p>
+          <p>{{blog.tags}}</p>
         </div>
     <li>
     
