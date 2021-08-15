@@ -425,8 +425,11 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
 
 
 ### Media
-   - homepage image is from pexels.com by cottonbro 
-   [girl in a yellow jacket](https://www.pexels.com/photo/girl-in-yellow-jacket-holding-white-printer-paper-7595160/)
+   - homepage image1 is from pexels.com by cottonbro 
+   [girl in a yellow top](https://www.pexels.com/photo/girl-in-yellow-jacket-holding-white-printer-paper-7595160/)
+   - homepage image2 is from pexels.com by Tony Schnagly
+   [man in brown sweater using mac book pro](https://www.pexels.com/photo/man-in-brown-sweater-using-macbook-pro-5588211/)
+
 
 ### Acknowledgements
 

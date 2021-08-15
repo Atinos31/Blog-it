@@ -14,47 +14,155 @@
         {% endfor %}
         {% endif %}
         {% endwith%}
-       
-    <div class="row">
-        <div class="col s12">
-            <h1 class="header flow-text">Welcome to BlogIt</h1>
-            <div class="card-image">
-                <img src="/static/images/blogger.jpg" class="responsive-img z-depth-3"
-                    alt="a girl-in-yellow-jacket-holding-white-printer-paper">
-            </div>
-            <div class="card-stacked">
-                <div class="card-content">
-                    <h2 class="flow-text"><i>BlogIt is a place to write, read, and connect.</i></h2>
-                    <p>The best ideas can change who we are.<br> BlogIt is where those ideas take shape, take off, and spark
-                        powerful conversations<br>
-                        It's easy and free to share your thoughts on any topic and connect with an audience.</p>
+<!-- site title---->
+<div class="row">
+    <div class="col s12">
+        <h1 class="header flow-text">Welcome to BlogIt</h1>
+        <h2 class="flow-text">
+            <i>
+                BlogIt is a place to write, read, and connect.
+            </i>
+        </h2>
+    </div>
+</div>
+<div class="parallax-container">
+    <div class=" materialboxed parallax"><img src="/static/images/blogger.jpg"
+            alt="a girl in a yellow blouse lost in her thoughts" class="responsive-image" width="700">
+    </div>
+</div>
+</div>
+</div>
+<hr>
+<!-- main section-->
+<div class="container">
+    <div class="section">
+
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center brown-text"><i class="fas fa-atom"></i></h2>
+                    <h5 class="center">Our Story</h5>
+
+                    <p class="light"> We’re an open platform where over 100 million readers come to find insightful and
+                        dynamic thinking. Here, expert and undiscovered voices alike dive into the heart of any topic
+                        and bring new ideas to the surface. Our purpose is to spread these ideas and deepen
+                        understanding of the world..</p>
                 </div>
-                <ul class="collapsible">
-                    <li>
-                        <div class="collapsible-header white-text teal lighten-2 text-shadow">
-                            <i class="fas fa-caret-down"></i>Our Story
-                        </div>
-                        <div class="collapsible-body"><span>
-                                <p><i>
-                                        We’re an open platform where many readers come to find insightful and dynamic
-                                        thinking.<br>
-                                        Here, expert and undiscovered voices alike dive into the heart of any topic and
-                                        bring new ideas to the surface.<br>
-                                        Our purpose is to spread these ideas and deepen understanding of the world.<br>
-                                        Create the space for your thoughts to take off by clicking the button below <i
-                                            class="fas fa-arrow-alt-circle-down 2x"></i>
-                                    </i>
-                                </p>
-                            </span></div>
-                    </li>
-                </ul>
-                <div class="card-action">
-                    <a href="{{ url_for('register')}}" class="btn-large text-shadow cyan right" type="submit"
-                        name="action"><i class="fas fa-angle-double-right right"></i>Get Started</a>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center brown-text"><i class="fas fa-edit"></i></h2>
+                    <h5 class="center">Write</h5>
+                    <p>Publish, grow, and connect, all in one place.</p>
+                    <p class="light">
+                    <p>If you have a story to tell, knowledge to share, or a perspective to offer — welcome home. Here,
+                        your writing can thrive in a network supported by millions of readers — not ads.</p>
+
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center brown-text"><i class="fas fa-users-cog"></i></h2>
+                    <h5 class="center">
+                        How do i start?
+                    </h5>
+                    <p class="light">First, make a free account. Then, sign in, click on create new post in the top of
+                        the page, then “Write a post. click on this button below to get started”
+                    </p>
+                </div>
+                    <p> 
+                        
+                        <a href="{{ url_for('register')}}" class="btn-large text-shadow cyan" type="submit"
+                            name="action"><i class="fas fa-angle-double-right right"></i>Get Started
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col s12">
+        <h2 class="flow-text center-align">
+            Create the space for your thoughts to take off.
+        </h2>
+        <p class="center-align">A blank page is also a door. At BlogIt you can walk through it. It's easy and free to
+            share your thoughts on any topic, connect with an audience and express yourself.
+        </p>
     </div>
+</div>
+<div class="parallax-container">
+    <div class="materialboxed parallax"><img src="/static/images/blogger1.jpg"
+            alt="man in brown sweater using mac book pro" class="responsive-img" width="650">
     </div>
+</div>
+</div>
+</div>
+<hr>
+<div class="container">
+    <div class="section">
+
+        <div class="row">
+            <div class="col s12 center">
+                <!-- contact us modal-->
+                <!-- Modal Trigger -->
+                <h3>
+                    <a class="waves-effect waves-light btn-large modal-trigger" href="#contact">
+                        Contact Us <i class="fas fa-paper-plane brown-text"></i>
+                    </a>
+                </h3>
+
+                <!-- Modal Structure -->
+                <div id="contact" class="modal">
+                    <div class="modal-content">
+                        <h4>
+                            Contact Us
+                        </h4>
+                        <p>
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="fas fa-user prefix"></i>
+                                        <input id="username" type="text" name="username" minlength="5" maxlength="15"
+                                            pattern="^[a-zA-z0-9]{5,15}$" class="validate required">
+                                        <label for="username">Username <i class="fas fa-asterisk"></i></label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="fas fa-envelope prefix"></i>
+                                        <input id="email" type="email" name="email" class="validate required">
+                                        <label for="email">Email <i class="fas fa-asterisk"></i></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="fas fa-pen prefix"></i>
+                                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <label for="textarea1">Message <i class="fas fa-asterisk"></i></label>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-large waves-effect waves-light" type="submit"
+                                        name="action">Send
+                                        <i class="fas fa-angle-double-right right"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 {% endblock %}

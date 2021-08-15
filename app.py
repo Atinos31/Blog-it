@@ -1,3 +1,4 @@
+  
 import os
 from flask import (
     Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for)
@@ -14,7 +15,7 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-
+app.config["IMAGE_UPLOADS"] = "/workspace/bog-it/static/profile_pics/default.png/"
 mongo = PyMongo(app)
 
 #dummy data for blogposts
@@ -111,15 +112,17 @@ def login():
     return render_template("login.html")
 
 
-# profile page 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+
     if session["user"]:
-        return render_template("profile.html", username=username,)
+        return render_template("profile.html", username=username)
+
     return redirect(url_for("login"))
+
 
 
 # logout function
@@ -129,6 +132,22 @@ def logout():
     flash("You have been logged out!")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+# upload file function
+@app.route("/upload_image", methods=["GET", "POST"])
+def upload_image():
+    if request.method == 'POST':
+        if request.files:
+            image = request.files["profile-image"]
+            if image.filename == "":
+                print('image must have filename')
+                return redirect(request.url)
+            image.save(os.path.join(app.config[
+                "IMAGE-UPLOADS"], image.filename))
+            print('image save')
+            return redirect(request.url)
+    return render_template('profile.html')
 
 
 if __name__ == "__main__":

@@ -1,26 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-
-
- <div class="row">
-      <div class="col s12 m8 offset-m2">
-          <div class="card-panel">
-             <h5 class="center-align light-blue-text text-darken-4">
-                 Hi, {{ username }}
-             </h5>
-          </div>
-      </div>
- </div>
- 
-  <ul class="collection">
-    <li class="collection-item avatar">
-      <img src="url_for('static', filename='profile_pics/defaultpic.jpg" alt="" class="circle">
-      <span class="title">{{username }}</span>
-      <p>about-me<br>
-        member_since
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-    </li>
-  <!-- FORM HERE -->
+   <div class="row">
+       <div class="col s12 m8">
+           <h3 class="center-align light-blue-text text-darken-4">
+               <i> Hi, {{ username }}</i> <br>
+       </div>
+   </div>
+   </div>
+   <div class="container">
+    <div class="row">
+        <div class="col">
+            <h1> Upload image</h1>
+            <hr>
+            <form action="/" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="Select-image">Select Image</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="profile-image" id="profile-image">
+                    <label for="image" class="custom-file-label">Select image...</label>
+                </div>
+            </div>
+            <button type="submit" class="btn lighten-blue text-shadow">upload image</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+
+
+  
 {% endblock %}

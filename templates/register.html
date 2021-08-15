@@ -4,33 +4,34 @@
 
 <div class="row">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-        <div class="card-panel grey lighten-4 z-depth-4 hoverable ">
+        <div class="card-panel grey lighten-4 z-depth-4 hoverable">
             <!-- username -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-plus prefix dark-blue-text text-darken-4"></i>
+                    <i class="fas fa-user-plus prefix"></i>
                     <input id="username" name="username" type="text" pattern="^(?=.*[A-Za-z])[a-zA-Z0-9]{5,20}$"
                         class="validate" minlength="5" maxlength="20" class="validate"
                         title="Your username can't include any blank spaces and must be between 5-20 characters, it may only contain letters and numbers"
                         required>
-                    <label for="username">Username</label>
+                    <label for="username">Username <i class="fas fa-asterisk"></i></label>
                 </div>
-            </div>
+        
             <div class="input-field col s12">
-                <i class="fas fa-envelope prefix dark-blue-text text-darken-4"></i>
+                <i class="fas fa-envelope prefix"></i>
                 <input id="email" type="email" name="email" class="validate" title="Please fill in a valid email"
                     required>
-                <label for="email">Email</label>
+                <label for="email">Email <i class="fas fa-asterisk"></i></label>
             </div>
             <!-- password -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-lock prefix dark-blue-text text-darken-4"></i>
+                     <i class="password-visible fas fa-eye prefix" id="togglePassword"></i>
                     <input id="password" name="password" type="password" minlength="5" maxlength="20"
                         pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*-_#?&])([A-Za-z\d@$!%-_*#?&]){5,30}$"
                         class="validate" title="Passwords must be at least 5 characters long and include a mixture of
                                 numbers, letters and one of the following special character - @$!%*_-#?&" required>
-                    <label for="password">Password</label>
+                    <label for="password">Password <i class="fas fa-asterisk"></i></label>
+        
                 </div>
             </div>
             <!-- terms and conditions -->
@@ -38,8 +39,8 @@
                 <p>
                     <label>
                         <input type="checkbox" required/>
-                        <span>Agree <a href="#" target="_blank" aria-label="terms and conditions opens in a new tab"
-                                class="links light-blue-text" required>Terms and Conditions</a>
+                        <span>Agree <a href="#terms" target="_blank" aria-label="terms and conditions opens in a new tab"
+                                class="links light-blue-text modal-trigger" required>Terms and Conditions</a>
                         </span>
                     </label>
                 </p>
@@ -62,5 +63,24 @@
         </p>
     </div>
 </div>
+ <!--terms and conditions modal -->
+        <!-- Modal Trigger -->
+
+  <!-- Modal Structure -->
+  <div id="terms" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Terms and Services</h4>
+      <p>Thanks for using BlogIt. <br>
+      Our mission is to deepen people’s understanding of the world and spread ideas that matter.<br>
+These Terms of Service (“Terms”) apply to your access to and use of the websites, mobile applications and other online products and services (collectively, the “Services”) provided by A BlogIt Corporation (“BlogIT” or “we”).</p>
+ <p>By clicking your consent (e.g. “Continue,” “Sign-in,” or “Register,”) or by using our Services, you agree to these Terms, including the mandatory arbitration provision and class action waiver in the Resolving Disputes; Binding Arbitration Section.
+Our Privacy Policy explains how we collect and use your infor</p>
+<p>Our Privacy Policy explains how we collect and use your information while our Rules outline your responsibilities when using our Services. By using our Services, you’re agreeing to be bound by these Terms and our Rules. Please see our Privacy Policy for information about how we collect, use, share and otherwise process information about you.</p>
+<p>If you have any questions about these Terms or our Services, please contact us at legal@blogit.com.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
 {% endblock %}

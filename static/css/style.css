@@ -1,5 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Crimson+Pro:ital,wght@0,200;0,400;0,500;1,300;1,500&family=Josefin+Slab:wght@100&family=Lexend+Deca&family=Livvic:ital,wght@0,200;0,400;1,400&display=swap');
 /* global styles*/
+:root{
+     /*      Theme colors        */
+    --text-gray: #2a2f35;
+    --text-light : #686666da;
+    --header-color: #3a3838;
+    --sub-header:#252525;
+    --white: #ffffff;
+    --midnight: #104f55;
+
+    /* gradient color   */
+    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+    /*      theme font-family   */
+    --Abel: 'Abel', cursive;
+    --Anton: 'Anton', cursive;
+    --Josefin : 'Josefin', cursive;
+    --Lexend: 'Lexend', cursive;
+    --Livvic : 'Livvic', cursive;
+    --Crimson: 'Crimson Text', sans-serif.
+}
+
+
 .text-shadow{
     text-shadow: 3px 3px 3px rgba(0,0,0,0.6);
 }
@@ -9,17 +31,33 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+   
   }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+h2,h3, h4, h5, h6 {
+  color:var(--sub-header);
 }
 
 .header{
-    font-family: 'Crimson Text', serif;
+    font-family: var(--Lexend);
     font-weight: 900;
-    font-size: 35px;
+    color: var(--header-color);
+
 }
+
+h2{
+    font-family: var(--Crimson);
+    font-weight: 600;
+    line-height: 10px;
+}
+p{
+    font-family: var(--Josefin);
+    font-weight: 400;
+    font-style: italic;
+    font-size: medium;
+    color: var(--text-gray);
+}
+
 
 
 main {
@@ -32,58 +70,30 @@ main {
 
 
 
-/*--------main-------*/
-.content-section {
-  background: #ffffff;
-  padding: 10px 15px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 15px;
+/*----------------- forms-----------------*/
+form input{
+    cursor: pointer;
+}
+#togglePassword{
+    margin-right: -30px;
+    
 }
 
-.article-title {
-  color: #444444;
-}
+/*--------homepage-------*/
+ .social .fab{
+     color: #fafafa;
+     font-size: 20px;
+     margin-right: 5px;
+ }
 
-a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
-}
+ .fa-asterisk{
+     color: red;
+     font-size: 8px;
+     
+ }
 
-.article-content {
-  white-space: pre-line;
-}
+.icon-block{
+margin-right: 20px;
+padding: 5px;
 
-.article-img {
-  height: 65px;
-  width: 50px;
-  margin-right: 16px;
-}
-
-.article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
-}
-
-.article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
-}
-
-.article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-}
-
-.account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
-}
-
-.account-heading {
-  font-size: 2.5rem;
 }
