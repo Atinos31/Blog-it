@@ -97,3 +97,15 @@ margin-right: 5px;
 padding: 5px;
 
 }
+
+/*-----------posts page----------------------*/
+.postpage{
+    padding:0 !important;
+    margin:0 !important;
+    box-sizing: border-box !important;
+}
+
+.post div img{
+    position: relative;
+    width: 100%;
+}

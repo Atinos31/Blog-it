@@ -429,6 +429,9 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
    [girl in a yellow top](https://www.pexels.com/photo/girl-in-yellow-jacket-holding-white-printer-paper-7595160/)
    - homepage image2 is from pexels.com by Tony Schnagly
    [man in brown sweater using mac book pro](https://www.pexels.com/photo/man-in-brown-sweater-using-macbook-pro-5588211/)
+   - blogpost pics
+   [Photo by ALEXGTACAR from Pexels](https://www.pexels.com/photo/shallow-focus-photography-of-blue-alpine-car-1592384/)
+   [Photo by mahmoud abdelwahab from Pexels](https://www.pexels.com/photo/cold-snow-businessman-fashion-7083673/)
 
 
 ### Acknowledgements

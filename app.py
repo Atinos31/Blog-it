@@ -41,17 +41,19 @@ def home():
     return render_template('home.html', posts=posts)
 
 
-@app.route("/about")
-def about():
-    return render_template('about.html')
-
-
 @app.route("/")
-# function to render the home page
+# function to render the explore page
 @app.route("/get_blogs")
 def get_blogs():
     blogs = list(mongo.db.blogs.find())
     return render_template("blogs.html", blogs=blogs)
+
+
+# function to render the post page
+@app.route("/get_posts")
+def get_posts():
+    posts = list(mongo.db.posts.find())
+    return render_template("post.html", posts=posts)
 
 
 # create a register function
