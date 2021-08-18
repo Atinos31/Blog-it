@@ -1,22 +1,36 @@
-  
 import os
 from flask import (
-    Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for)
-from werkzeug.exceptions import abort
+    Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for, jsonify)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from bson import json_util
+import cloudinary
+from flask_cors import CORS, cross_origin
+from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
 
 app = Flask(__name__)
+CORS(app)
+
+load_dotenv()
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-app.config["IMAGE_UPLOADS"] = "/workspace/bog-it/static/profile_pics/default.png/"
+cloudinary.config(
+    cloud_name=os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'),
+    api_secret=os.getenv('API_SECRET'))
+
+
 mongo = PyMongo(app)
+db = mongo.db
+
+
+UPLOAD_FOLDER = './static/profile_pics'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 #dummy data for blogposts
 posts = [
@@ -38,8 +52,8 @@ posts = [
 
 @app.route("/home")
 def home():
-    return render_template('home.html', posts=posts)
-
+    return render_template('home.html')
+   
 
 @app.route("/")
 # function to render the explore page
@@ -61,16 +75,21 @@ def get_posts():
 def register():
     if request.method == "POST":
         # check if username already exists in db
+        user_email = mongo.db.form.get("email")
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-
+        existing_email = mongo.db.users.find_one(
+            {"email": user_email})
         if existing_user:
-            flash("Username already exists")
+            flash("That Usernamme is already taken")
             return redirect(url_for("register"))
-
+        if existing_email:
+            flash("That email is already taken")
+            return redirect(url_for("register"))
+        
         register = {
             "username": request.form.get("username").lower(),
-            "email": request.form.get("email"),
+            "user_email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password"))
 
         }
@@ -78,9 +97,9 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
+        session["user"] = request.form.get("email")
         flash("Registration Successful!")
         return redirect(url_for("login", username=session["user"]))
-
     return render_template("register.html")
 
 
@@ -91,6 +110,8 @@ def login():
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
+        existing_user = mongo.db.users.find_one({
+            "email": request.form.get("email")})
 
         if existing_user:
             # ensure hashed password matches user input
@@ -116,15 +137,34 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    
+    """ Profile page
+    Finds the profile from the username returns - current_user_profile
+    If the profile is not found the user is redirected to profile_not_found.html page
+    Finds user from the session['user'] cookie - returns user_session
+    If user not in session directs to login.html
+    The location function is called and check location - returns loaction
+    The member since function is called  to checked for the date the user joined - returns date
+"""
+    if 'user' in session:
+        current_user = mongo.db.users.find_one({"username": username})
+        user = mongo.db.users.find_one({'username': session['user']})
+        if not current_user:
+            return render_template('profile-not-found.html')
+    
+    if request.method == 'POST':
+        location = request.form['user_location']
+        about_me = request.form['user_about_me']
+        email = request.form['user_email']
+        member_since = request.form['memeber_since']
+        mongo.db.insert_one({'location': location, 'about_me': about_me, 'email': email, 'member_since': int(member_since)})
+        return render_template('profile.html')
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template(
+            "profile.html", current_user=current_user, user=user)
 
     return redirect(url_for("login"))
-
 
 
 # logout function
@@ -136,20 +176,31 @@ def logout():
     return redirect(url_for("login"))
 
 
-# upload file function
-@app.route("/upload_image", methods=["GET", "POST"])
-def upload_image():
-    if request.method == 'POST':
-        if request.files:
-            image = request.files["profile-image"]
-            if image.filename == "":
-                print('image must have filename')
-                return redirect(request.url)
-            image.save(os.path.join(app.config[
-                "IMAGE-UPLOADS"], image.filename))
-            print('image save')
-            return redirect(request.url)
-    return render_template('profile.html')
+# upload files route
+@app.route("/upload", methods=['POST'])
+def upload_file():
+  app.logger.info('in upload route')
+
+  cloudinary.config(cloud_name = os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'), 
+    api_secret=os.getenv('API_SECRET'))
+  upload_result = None
+  if request.method == 'POST':
+    file_to_upload = request.files['file']
+    app.logger.info('%s file_to_upload', file_to_upload)
+    if file_to_upload:
+      upload_result = cloudinary.uploader.upload(file_to_upload)
+      app.logger.info(upload_result)
+      return jsonify(upload_result)
+ 
+# error pages
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":
