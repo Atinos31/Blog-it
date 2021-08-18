@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} BlogIt - Page Not Found {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col s4">
+<img src="{{ url_for('static', filename='images/404.gif')}}"  class= "circle responsive-img" alt="404 giphy">
+ <h1>4<i class="fas fa-sad-cry"></i>4</h1>
+    <h2>Ooops!</h2>
+    <p class="text">
+        Looks like the page you're looking for has been <i>stoolen</i>.<br /> I hope it didn't get <i>dumped</i> somewhere we can't find.<br /> I know, I know, these puns are <i>crappy</i>!
+    </p>
+ </span>
+ 
+    <a class="floating-btn" href="home.html">
+        Get back home
+    </a>
+ </div>
+{% endblock %}

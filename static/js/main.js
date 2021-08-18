@@ -8,3 +8,5 @@ togglePassword.addEventListener('click', function (e) {
     // toggle the eye / eye slash icon
     this.classList.toggle('fa-eye-slash');
 });
+
+// upload image

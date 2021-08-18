@@ -1,30 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-   <div class="row">
-       <div class="col s12 m8">
-           <h3 class="center-align light-blue-text text-darken-4">
-               <i> Hi, {{ username }}</i> <br>
-       </div>
-   </div>
-   </div>
-   <div class="container">
-    <div class="row">
-        <div class="col">
-            <h1> Upload image</h1>
-            <hr>
-            <form action="/" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="Select-image">Select Image</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="profile-image" id="profile-image">
-                    <label for="image" class="custom-file-label">Select image...</label>
-                </div>
-            </div>
-            <button type="submit" class="btn lighten-blue text-shadow">upload image</button>
-            </form>
-        </div>
+<h3>Hi, {{current_user.username}}</h3>
+<!-- Flash messages -->
+{% with messages = get_flashed_messages() %}
+{% if messages|length > 0 %}
+<div class="row flashes">
+    <div class="col s12 center-align">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
     </div>
 </div>
+
+{% endif %}
+{% endwith %}
+ <div class="row">
+<div class="profile-container col-s12 m-6 align-center">
+  <div class="top-bg">
+    <div class="profile-img-circle">
+    <img src="/static/profile_pics/default.png" alt="default image" class="default-image">
+  </div>
+  </div>
+  <div class="profile-content">
+   <h2 class="user_username">{{current_user.username}}</h2>
+   <h4 class="user_location">bruxelles, Belgium</h4>
+   <p class="user_about_me"> ""Description of me or you I’m reliable—I was so consistent in updating patient’s charts that I was promoted to a position responsible for training new hires. I’m very cheerful.""</p>
+   <ul class="social-media">
+     <li><a href="https://www.instagram.com/">
+       <i class="fab fa-instagram"></i></a></li>
+      <li><a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a></li>
+       <li><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+   </ul>
+   <button class="change-photo text-shadow">Edit Profile</button>
+  </div>
+</div>
+
+ 
+
 
 
 

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Crimson+Pro:ital,wght@0,200;0,400;0,500;1,300;1,500&family=Josefin+Slab:wght@100&family=Lexend+Deca&family=Livvic:ital,wght@0,200;0,400;1,400&display=swap');
-/* global styles*/
+/*------------------- global styles------------------------------*/
 :root{
      /*      Theme colors        */
     --text-gray: #2a2f35;
@@ -70,7 +70,7 @@ main {
 
 
 
-/*----------------- forms-----------------*/
+/*------------------------- forms------------------------------*/
 form input{
     cursor: pointer;
 }
@@ -79,7 +79,7 @@ form input{
     
 }
 
-/*--------homepage-------*/
+/*--------------------------------homepage------------------------*/
  .social .fab{
      color: #fafafa;
      font-size: 20px;
@@ -98,7 +98,7 @@ padding: 5px;
 
 }
 
-/*-----------posts page----------------------*/
+/*--------------------posts page------------------------------------------*/
 .postpage{
     padding:0 !important;
     margin:0 !important;
@@ -108,4 +108,150 @@ padding: 5px;
 .post div img{
     position: relative;
     width: 100%;
+}
+
+/*---------------------- profile page----------------------------*/
+
+.profile-container{
+    width:500px;
+    height:520px;
+    background: white;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    display:flex;
+    flex-direction: column;
+    margin-left: 60px;
+
+}
+
+.top-bg{
+    flex:1;
+    background: #49c0b6;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.profile-img-circle{
+    padding:4px;
+    background:#1b5214;
+    width:100px;
+    height: 100px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: 0px;
+    transform: translateY(48px);
+}
+
+.default-image{
+    border-radius: 100%;
+    width:93px;
+    height:93px;
+}
+
+.profile-content{
+    flex:3;
+    padding-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.user_username{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: #616161;
+    font-size: 28px;
+}
+
+.user_location{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: rgba(0,0,0 .50);
+}
+
+.user_about_me{
+    margin-bottom:8px;
+    margin-top: 16px;
+    color: rgba(0,0,0 .50);
+    font-size: 14px;
+    padding-left: 15%;
+    padding-right:15%;
+}
+
+ul.social-media{
+    list-style-type: none;
+    margin: 0;
+    display:flex;
+    width:50%;
+    padding:0;
+   font-size: 24px;
+    justify-content: space-between;
+    color: var(--text-light);
+
+}
+
+.change-photo{
+    border:0;
+    background: teal;
+    color: #fff;
+    padding:8px 18px;
+    font-weight: 300;
+    position: absolute;
+    bottom: 28px;
+    border-radius: 4px;
+    transition: .15s all ease-in-out;
+}
+.change-photo:hover {
+        transform:scale(1.05);
+}
+.change-photo:focus{
+        outline:none
+    
+}
+
+
+/*---------------------- error pages------------------------------------------*/
+.text {
+    font-size: 20px;
+    line-height: 30px;
+    margin: 20px 0;
+}
+
+.attribution a {
+    color: #333;
+}
+
+.floating-btn {
+    border-radius: 26.5px;
+    background-color: #001F61;
+    border: 1px solid #001F61;
+    box-shadow: 0 16px 22px -17px #03153B;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 12px 20px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    
+}
+
+.floating-btn:hover {
+    background-color: #ffffff;
+    color: #001F61;
+}
+
+.floating-btn:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 600px) {
+   
+    .text {
+        max-width: 80vw;
+    }
 }
