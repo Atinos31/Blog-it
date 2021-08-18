@@ -1,58 +1,30 @@
 import os
 from flask import (
-<<<<<<< HEAD
     Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for)
-=======
-    Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for, jsonify)
->>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson import json_util
-import cloudinary
-from flask_cors import CORS, cross_origin
-from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-
 app = Flask(__name__)
-CORS(app)
-
-load_dotenv()
-
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-<<<<<<< HEAD
-ALLOWED_EXTS = {"txt", "jpeg", "jpg", "png"}
-=======
-cloudinary.config(
-    cloud_name=os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'),
-    api_secret=os.getenv('API_SECRET'))
-
->>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 
 mongo = PyMongo(app)
-db = mongo.db
 
 
-UPLOAD_FOLDER = './static/profile_pics'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-
-
-UPLOAD_FOLDER = './static/profile_pics'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-
-#dummy data for blogposts
+# dummy data for blogposts
 posts = [
     {
         'author': 'Grace Rock',
         'category': 'Software Development',
         'title': '7 Money Making Side Projects You Can Do As A Developer',
         'content': '1- Ethincal hacking is more active side income than passive income. Personally, I haven’t ‘hacked’ anything yet. But over the past year, I’ve been doing a lot of security-related work and find that organizations are more vulnerable than we actually want to believe.',
-        'date_posted': 'August 07, 2021'        
+        'date_posted': 'August 07, 2021'
     },
     {
         'author': 'Mary Poppins',
@@ -66,7 +38,7 @@ posts = [
 @app.route("/home")
 def home():
     return render_template('home.html')
-   
+
 
 @app.route("/")
 # function to render the explore page
@@ -99,7 +71,7 @@ def register():
         if existing_email:
             flash("That email is already taken")
             return redirect(url_for("register"))
-        
+
         register = {
             "username": request.form.get("username").lower(),
             "user_email": request.form.get("email"),
@@ -116,8 +88,6 @@ def register():
     return render_template("register.html")
 
 
-
-
 # create login function
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -132,11 +102,11 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
-                            request.form.get("username")))
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -152,7 +122,6 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    
     """ Profile page
     Finds the profile from the username returns - current_user_profile
     If the profile is not found the user is redirected to profile_not_found.html page
@@ -166,17 +135,15 @@ def profile(username):
         user = mongo.db.users.find_one({'username': session['user']})
         if not current_user:
             return render_template('profile-not-found.html')
-<<<<<<< HEAD
-=======
-    
+
     if request.method == 'POST':
         location = request.form['user_location']
         about_me = request.form['user_about_me']
         email = request.form['user_email']
         member_since = request.form['memeber_since']
-        mongo.db.insert_one({'location': location, 'about_me': about_me, 'email': email, 'member_since': int(member_since)})
+        mongo.db.insert_one({'location': location, 'about_me': about_me,
+                            'email': email, 'member_since': int(member_since)})
         return render_template('profile.html')
->>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 
     if session["user"]:
         return render_template(
@@ -194,26 +161,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-<<<<<<< HEAD
-
-=======
-# upload files route
-@app.route("/upload", methods=['POST'])
-def upload_file():
-  app.logger.info('in upload route')
-
-  cloudinary.config(cloud_name = os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'), 
-    api_secret=os.getenv('API_SECRET'))
-  upload_result = None
-  if request.method == 'POST':
-    file_to_upload = request.files['file']
-    app.logger.info('%s file_to_upload', file_to_upload)
-    if file_to_upload:
-      upload_result = cloudinary.uploader.upload(file_to_upload)
-      app.logger.info(upload_result)
-      return jsonify(upload_result)
- 
->>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 # error pages
 @app.errorhandler(500)
 def internal_server_error(e):

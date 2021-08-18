@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Crimson+Pro:ital,wght@0,200;0,400;0,500;1,300;1,500&family=Josefin+Slab:wght@100&family=Lexend+Deca&family=Livvic:ital,wght@0,200;0,400;1,400&display=swap');
+
 /*------------------- global styles------------------------------*/
-:root{
-     /*      Theme colors        */
+:root {
+    /*      Theme colors        */
     --text-gray: #2a2f35;
-    --text-light : #686666da;
+    --text-light: #686666da;
     --header-color: #3a3838;
-    --sub-header:#252525;
+    --sub-header: #252525;
     --white: #ffffff;
     --midnight: #104f55;
 
@@ -15,15 +16,15 @@
     /*      theme font-family   */
     --Abel: 'Abel', cursive;
     --Anton: 'Anton', cursive;
-    --Josefin : 'Josefin', cursive;
+    --Josefin: 'Josefin', cursive;
     --Lexend: 'Lexend', cursive;
-    --Livvic : 'Livvic', cursive;
+    --Livvic: 'Livvic', cursive;
     --Crimson: 'Crimson Text', sans-serif.
 }
 
 
-.text-shadow{
-    text-shadow: 3px 3px 3px rgba(0,0,0,0.6);
+.text-shadow {
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
 }
 
 body {
@@ -31,26 +32,31 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-   
-  }
 
-h2,h3, h4, h5, h6 {
-  color:var(--sub-header);
 }
 
-.header{
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--sub-header);
+}
+
+.header {
     font-family: var(--Lexend);
     font-weight: 900;
     color: var(--header-color);
 
 }
 
-h2{
+h2 {
     font-family: var(--Crimson);
     font-weight: 600;
     line-height: 10px;
 }
-p{
+
+p {
     font-family: var(--Josefin);
     font-weight: 400;
     font-style: italic;
@@ -64,48 +70,49 @@ main {
     flex: 1 0 auto;
 }
 
-.flashes h4{
+.flashes h4 {
     line-height: 2;
 }
 
 
 
 /*------------------------- forms------------------------------*/
-form input{
+form input {
     cursor: pointer;
 }
-#togglePassword{
+
+#togglePassword {
     margin-right: -30px;
-    
+
 }
 
 /*--------------------------------homepage------------------------*/
- .social .fab{
-     color: #fafafa;
-     font-size: 20px;
-     margin-right: 5px;
- }
+.social .fab {
+    color: #fafafa;
+    font-size: 20px;
+    margin-right: 5px;
+}
 
- .fa-asterisk{
-     color: red;
-     font-size: 8px;
-     
- }
+.fa-asterisk {
+    color: red;
+    font-size: 8px;
 
-.icon-block{
-margin-right: 5px;
-padding: 5px;
+}
+
+.icon-block {
+    margin-right: 5px;
+    padding: 5px;
 
 }
 
 /*--------------------posts page------------------------------------------*/
-.postpage{
-    padding:0 !important;
-    margin:0 !important;
+.postpage {
+    padding: 0 !important;
+    margin: 0 !important;
     box-sizing: border-box !important;
 }
 
-.post div img{
+.post div img {
     position: relative;
     width: 100%;
 }
@@ -113,19 +120,19 @@ padding: 5px;
 <<<<<<< HEAD
 /*---------------------- profile page----------------------------*/
 
-.profile-container{
-    width:500px;
-    height:520px;
+.profile-container {
+    width: 500px;
+    height: 520px;
     background: white;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-    display:flex;
+    display: flex;
     flex-direction: column;
     margin-left: 60px;
 
 }
 
-.top-bg{
-    flex:1;
+.top-bg {
+    flex: 1;
     background: #49c0b6;
     position: relative;
     display: flex;
@@ -133,10 +140,10 @@ padding: 5px;
     justify-content: center;
 }
 
-.profile-img-circle{
-    padding:4px;
-    background:#1b5214;
-    width:100px;
+.profile-img-circle {
+    padding: 4px;
+    background: #1b5214;
+    width: 100px;
     height: 100px;
     border-radius: 100%;
     position: absolute;
@@ -144,14 +151,14 @@ padding: 5px;
     transform: translateY(48px);
 }
 
-.default-image{
+.default-image {
     border-radius: 100%;
-    width:93px;
-    height:93px;
+    width: 93px;
+    height: 93px;
 }
 
-.profile-content{
-    flex:3;
+.profile-content {
+    flex: 3;
     padding-top: 48px;
     display: flex;
     flex-direction: column;
@@ -159,74 +166,75 @@ padding: 5px;
     position: relative;
 }
 
-.user_username{
+.user_username {
     margin-top: 8px;
     margin-bottom: 8px;
     color: #616161;
     font-size: 28px;
 }
 
-.user_location{
+.user_location {
     margin-top: 8px;
     margin-bottom: 8px;
     font-size: 15px;
-    color: rgba(0,0,0 .50);
+    color: rgba(0, 0, 0 .50);
 }
 
-.user_about_me{
-    margin-bottom:8px;
+.user_about_me {
+    margin-bottom: 8px;
     margin-top: 16px;
-    color: rgba(0,0,0 .50);
+    color: rgba(0, 0, 0 .50);
     font-size: 14px;
     padding-left: 15%;
-    padding-right:15%;
+    padding-right: 15%;
 }
 
-ul.social-media{
+ul.social-media {
     list-style-type: none;
     margin: 0;
-    display:flex;
-    width:50%;
-    padding:0;
-   font-size: 24px;
+    display: flex;
+    width: 50%;
+    padding: 0;
+    font-size: 24px;
     justify-content: space-between;
     color: var(--text-light);
 
 }
 
-.change-photo{
-    border:0;
+.change-photo {
+    border: 0;
     background: teal;
     color: #fff;
-    padding:8px 18px;
+    padding: 8px 18px;
     font-weight: 300;
     position: absolute;
     bottom: 28px;
     border-radius: 4px;
     transition: .15s all ease-in-out;
 }
+
 .change-photo:hover {
-        transform:scale(1.05);
+    transform: scale(1.05);
 }
-.change-photo:focus{
-        outline:none
-    
+
+.change-photo:focus {
+    outline: none
 }
 
 
 /*---------------------- error pages------------------------------------------*/
 =======
+
 /* profile page*/
-.update-btn{
-    margin-left: 20px!important;
-    background-color:none!important;
+.update-btn {
+    margin-left: 20px !important;
+    background-color: none !important;
     border: 3px red !important;
-     
+
 }
 
 /* error pages*/
->>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
-.text {
+>>>>>>>8054a8d96c3c7b315e036728df8177d5cb6a674f .text {
     font-size: 20px;
     line-height: 30px;
     margin: 20px 0;
@@ -249,7 +257,7 @@ ul.social-media{
     bottom: 20px;
     right: 20px;
     z-index: 999;
-    
+
 }
 
 .floating-btn:hover {
@@ -262,7 +270,7 @@ ul.social-media{
 }
 
 @media screen and (max-width: 600px) {
-   
+
     .text {
         max-width: 80vw;
     }

@@ -148,11 +148,11 @@ Name</p>
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <i class="fas fa-pen prefix"></i>
-                                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                <textarea id="textarea1" class="materialize-textarea" required></textarea>
                                                 <label for="textarea1">Message <i class="fas fa-asterisk"></i></label>
                                             </div>
                                         </div>
-                                        <button class="btn btn-large waves-effect waves-light" type="submit"
+                                        <a class="btn btn-large waves-effect waves-light" href="#confirm" type="submit"
                                             name="action">Send
                                             <i class="fas fa-angle-double-right right"></i>
                                         </button>
@@ -170,6 +170,19 @@ Name</p>
         </div>
     </div>
 
+<!-- confirmation modal-->
+<!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#confirm">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="confirm" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
 
 
 
