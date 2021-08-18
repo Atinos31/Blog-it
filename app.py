@@ -1,22 +1,45 @@
 import os
 from flask import (
+<<<<<<< HEAD
     Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for)
+=======
+    Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for, jsonify)
+>>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from bson import json_util
+import cloudinary
+from flask_cors import CORS, cross_origin
+from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
 
 app = Flask(__name__)
+CORS(app)
+
+load_dotenv()
 
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+<<<<<<< HEAD
 ALLOWED_EXTS = {"txt", "jpeg", "jpg", "png"}
+=======
+cloudinary.config(
+    cloud_name=os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'),
+    api_secret=os.getenv('API_SECRET'))
+
+>>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 
 mongo = PyMongo(app)
+db = mongo.db
+
+
+UPLOAD_FOLDER = './static/profile_pics'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
 UPLOAD_FOLDER = './static/profile_pics'
@@ -143,6 +166,17 @@ def profile(username):
         user = mongo.db.users.find_one({'username': session['user']})
         if not current_user:
             return render_template('profile-not-found.html')
+<<<<<<< HEAD
+=======
+    
+    if request.method == 'POST':
+        location = request.form['user_location']
+        about_me = request.form['user_about_me']
+        email = request.form['user_email']
+        member_since = request.form['memeber_since']
+        mongo.db.insert_one({'location': location, 'about_me': about_me, 'email': email, 'member_since': int(member_since)})
+        return render_template('profile.html')
+>>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 
     if session["user"]:
         return render_template(
@@ -160,7 +194,26 @@ def logout():
     return redirect(url_for("login"))
 
 
+<<<<<<< HEAD
 
+=======
+# upload files route
+@app.route("/upload", methods=['POST'])
+def upload_file():
+  app.logger.info('in upload route')
+
+  cloudinary.config(cloud_name = os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'), 
+    api_secret=os.getenv('API_SECRET'))
+  upload_result = None
+  if request.method == 'POST':
+    file_to_upload = request.files['file']
+    app.logger.info('%s file_to_upload', file_to_upload)
+    if file_to_upload:
+      upload_result = cloudinary.uploader.upload(file_to_upload)
+      app.logger.info(upload_result)
+      return jsonify(upload_result)
+ 
+>>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 # error pages
 @app.errorhandler(500)
 def internal_server_error(e):

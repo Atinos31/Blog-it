@@ -9,4 +9,19 @@ togglePassword.addEventListener('click', function (e) {
     this.classList.toggle('fa-eye-slash');
 });
 
+<<<<<<< HEAD
 // upload image
+=======
+// testing
+
+fetch("http://127.0.0.1:8080/upload", options)
+.then((response) => {
+return response.json();
+})
+.then((data) => {
+console.log(data);
+})
+.catch((error) => {
+console.log(error);
+});
+>>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f

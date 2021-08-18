@@ -20,8 +20,13 @@
       "**/core.python*": true,
       "**/CVS": true
    },
+<<<<<<< HEAD
    "files.autoSave": "afterDelay",
    "workbench.colorTheme": "Visual Studio Dark",
+=======
+   "files.autoSave": "off",
+   "workbench.colorTheme": "dark",
+>>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 "editor.defaultFormatter": "HookyQR.beautify",
 "editor.autoSave": "on",
 "editor.fontSize": 16,

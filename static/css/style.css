@@ -110,6 +110,7 @@ padding: 5px;
     width: 100%;
 }
 
+<<<<<<< HEAD
 /*---------------------- profile page----------------------------*/
 
 .profile-container{
@@ -214,6 +215,17 @@ ul.social-media{
 
 
 /*---------------------- error pages------------------------------------------*/
+=======
+/* profile page*/
+.update-btn{
+    margin-left: 20px!important;
+    background-color:none!important;
+    border: 3px red !important;
+     
+}
+
+/* error pages*/
+>>>>>>> 8054a8d96c3c7b315e036728df8177d5cb6a674f
 .text {
     font-size: 20px;
     line-height: 30px;
