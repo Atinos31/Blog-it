@@ -117,7 +117,6 @@ form input {
     width: 100%;
 }
 
-<<<<<<< HEAD
 /*---------------------- profile page----------------------------*/
 
 .profile-container {
@@ -197,8 +196,7 @@ ul.social-media {
     padding: 0;
     font-size: 24px;
     justify-content: space-between;
-    color: var(--text-light);
-
+    color: lightgray;
 }
 
 .change-photo {
@@ -223,22 +221,7 @@ ul.social-media {
 
 
 /*---------------------- error pages------------------------------------------*/
-=======
 
-/* profile page*/
-.update-btn {
-    margin-left: 20px !important;
-    background-color: none !important;
-    border: 3px red !important;
-
-}
-
-/* error pages*/
->>>>>>>8054a8d96c3c7b315e036728df8177d5cb6a674f .text {
-    font-size: 20px;
-    line-height: 30px;
-    margin: 20px 0;
-}
 
 .attribution a {
     color: #333;

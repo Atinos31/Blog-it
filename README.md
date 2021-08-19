@@ -163,7 +163,8 @@ i.  If I don’t have a profile photo, I'd like to have a choice of placeholder.
 * [Temp Mail](https://temp-mail.org/en/)
 
 #### Planning
-[lucid chart](https://lucidchart/app/dashboard/) - for planning of site flow, creating wire frames and general mind mapping
+[wireframes](https://lucidchart/app/dashboard/) - for planning of site flow, creating wire frames and general mind mapping
+
 
 ### Flask
 The application was built using the [Flask](https://flask.palletsprojects.com/en/1.1.x/) Framework which is reliant on the [Jinja](https://www.palletsprojects.com/p/jinja/) templating language. The application was written in python. 

@@ -17,23 +17,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-# dummy data for blogposts
-posts = [
-    {
-        'author': 'Grace Rock',
-        'category': 'Software Development',
-        'title': '7 Money Making Side Projects You Can Do As A Developer',
-        'content': '1- Ethincal hacking is more active side income than passive income. Personally, I haven’t ‘hacked’ anything yet. But over the past year, I’ve been doing a lot of security-related work and find that organizations are more vulnerable than we actually want to believe.',
-        'date_posted': 'August 07, 2021'
-    },
-    {
-        'author': 'Mary Poppins',
-        'title': 'Data related careers',
-        'content': 'Data science is not your only career option',
-        'date_posted': 'August 08, 2020'
-    }
-]
-
 
 @app.route("/home")
 def home():
@@ -152,15 +135,11 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-# logout function
-@app.route("/logout")
-def logout():
-    # remove user from session cookies
-    flash("You have been logged out!")
-    session.pop("user")
-    return redirect(url_for("login"))
-
-
+#add blogs
+@app.route("/add_blog")
+def add_blog():
+    return render_template('add_blog.html')
+    
 # error pages
 @app.errorhandler(500)
 def internal_server_error(e):
@@ -170,6 +149,14 @@ def internal_server_error(e):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+
+@app.route("/logout")
+def logout():
+    # remove user from session cookies
+    flash("You have been logged out!")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":

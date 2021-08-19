@@ -8,17 +8,19 @@
     <ul class="collapsible popout">
         {% for blog in blogs %}
     <li>
-      <div class="collapsible-header white-text teal darken-4 text-shadow">
+      <div class="collapsible-header white-text cyan darken-4 text-shadow">
           <i class="fas fa-caret-down"></i>
-          <strong> {{ blog.category }}</strong>
+          <strong> {{ blog.category_name }}</strong>
+
       </div>
       <div class="collapsible-body">
          <h3><strong>{{ blog.title }}</strong></h3>
+         <hr>
           <p> {{ blog.content }}</p>
-          <p><small> <i class="fas fa-user-circle"></i> {{ blog.author }} </small></p>
+          <p><small> <i class="fas fa-user-circle"></i> {{ blog.author_id }} </small></p>
           <p></p>
           <p><small> <i>Published on</i>: {{ blog.published_date }}</small></p>
-          <p><i class="fas fa-clock"></i>{{blog.time}} mins</p>
+          <p><i class="fas fa-clock"></i>{{blog.time}} mins read</p>
           <p>{{blog.tags}}</p>
         </div>
     <li>
