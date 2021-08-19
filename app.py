@@ -147,6 +147,13 @@ def add_blog():
     return render_template('add_blog.html', categories=categories)
 
 
+@app.route("/edit_blog/<blog_id>", methods=["GET", "POST"])
+def edit_blog(blog_id):
+    blog = mongo.db.blogs.find_one({"_id": ObjectId(blog_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template('edit_blog.html', blog=blog, categories=categories)
+
+
 # error pages
 @app.errorhandler(500)
 def internal_server_error(e):
