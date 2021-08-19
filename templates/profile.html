@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>Hi, {{current_user.username}}</h3>
-<!-- Flash messages -->
+<h3>Hi, {{username}}</h3>
+<!--flash messages-->
 {% with messages = get_flashed_messages() %}
 {% if messages|length > 0 %}
 <div class="row flashes">
@@ -22,7 +22,7 @@
   </div>
   </div>
   <div class="profile-content">
-   <h2 class="user_username">{{current_user.username}}</h2>
+   <h2 class="user_username">{{username}}</h2>
    <h4 class="user_location">bruxelles, Belgium</h4>
    <p class="user_about_me"> ""a short description of the user.""</p>
    <ul class="social-media">

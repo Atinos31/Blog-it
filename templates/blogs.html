@@ -11,8 +11,10 @@
       <div class="collapsible-header white-text cyan darken-4 text-shadow">
         <div class="col s3">
           <i class="fas fa-caret-down"></i>
-          <a class="waves-effect red btn-small" href="">Delete</a>
-          <a class="waves-effect teal accent-4 btn-small" href="{{ url_for('edit_blog', blog_id=blog._id)}}">Edit</a>
+          {% if session.user|lower == blog.created_by|lower %}
+              <a class="waves-effect red btn-small" href="">Delete</a>
+              <a class="waves-effect teal accent-4 btn-small" href="{{ url_for('edit_blog', blog_id=blog._id)}}">Edit</a>
+          {% endif %}
         </div>
         <div class="col s9">
           <strong> {{ blog.category_name }}</strong>
@@ -26,8 +28,8 @@
          
           <p>{{blog.img_url}}</p>
            <p><i class="fas fa-clock"></i>{{blog.read_time}} read</p>
-          <p><small> <i>Published on</i>: {{ blog.published_date }}</small></p>
-          <p><em> by: <i class="fas fa-user-circle"></i> {{ blog.author_id }} </em></p>
+          <p><small> <i>On</i>: {{ blog.published_date }}</small></p>
+          <p><em> by: <i class="fas fa-user-circle"></i> {{ blog.created_by }} </em></p>
           <p>{{blog.tags}}</p>
         </div>
     <li>

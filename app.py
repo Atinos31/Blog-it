@@ -44,43 +44,42 @@ def register():
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
+
         if existing_user:
-            flash("That Username is already taken")
+            flash("Username already exists")
             return redirect(url_for("register"))
+
         register = {
             "username": request.form.get("username").lower(),
-            "user_email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password"))
-
         }
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("login", username=session["user"]))
+        return redirect(url_for("profile", username=session["user"]))
+
     return render_template("register.html")
 
 
-# create login function
+#login function
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        existing_user = mongo.db.users.find_one({
-            "email": request.form.get("email")})
 
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(
-                    request.form.get("username")))
-                return redirect(url_for(
-                    "profile", username=session["user"]))
+                        session["user"] = request.form.get("username").lower()
+                        flash("Welcome, {}".format(
+                            request.form.get("username")))
+                        return redirect(url_for(
+                            "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -94,34 +93,15 @@ def login():
     return render_template("login.html")
 
 
+# profile function
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    """ Profile page
-    Finds the profile from the username returns - current_user_profile
-    If the profile is not found the user is redirected to profile_not_found.html page
-    Finds user from the session['user'] cookie - returns user_session
-    If user not in session directs to login.html
-    The location function is called and check location - returns loaction
-    The member since function is called  to checked for the date the user joined - returns date
-"""
-    if 'user' in session:
-        current_user = mongo.db.users.find_one({"username": username})
-        user = mongo.db.users.find_one({'username': session['user']})
-        if not current_user:
-            return render_template('profile-not-found.html')
-
-    if request.method == 'POST':
-        location = request.form['user_location']
-        about_me = request.form['user_about_me']
-        email = request.form['user_email']
-        member_since = request.form['memeber_since']
-        mongo.db.insert_one({'location': location, 'about_me': about_me,
-                            'email': email, 'member_since': int(member_since)})
-        return render_template('profile.html')
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template(
-            "profile.html", current_user=current_user, user=user)
+        return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
 
@@ -138,7 +118,7 @@ def add_blog():
             "published_date": request.form.get("published_date"),
             "tags": request.form.get("tags"),
             "read_time": request.form.get("read_time"),
-            "author_id": session["user"]  
+            "created_by": session['user']
         }
         mongo.db.blogs.insert_one(blog)
         flash('Blog Successfully Added')
@@ -149,6 +129,20 @@ def add_blog():
 
 @app.route("/edit_blog/<blog_id>", methods=["GET", "POST"])
 def edit_blog(blog_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "title": request.form.get("title"),
+            "content": request.form.get("content"),
+            "img_url": request.form.get("img_url"),
+            "published_date": request.form.get("published_date"),
+            "tags": request.form.get("tags"),
+            "read_time": request.form.get("read_time"),
+            "created_by": session['user']
+        }
+        mongo.db.blogs.update({"_id": ObjectId(blog_id)}, submit)
+        flash('Blog Successfully Updated')
+
     blog = mongo.db.blogs.find_one({"_id": ObjectId(blog_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template('edit_blog.html', blog=blog, categories=categories)
