@@ -127,6 +127,7 @@ def add_blog():
     return render_template('add_blog.html', categories=categories)
 
 
+# edit/update blog function
 @app.route("/edit_blog/<blog_id>", methods=["GET", "POST"])
 def edit_blog(blog_id):
     if request.method == "POST":
@@ -146,6 +147,14 @@ def edit_blog(blog_id):
     blog = mongo.db.blogs.find_one({"_id": ObjectId(blog_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template('edit_blog.html', blog=blog, categories=categories)
+
+
+# delete blog function
+@app.route("/delete_blog/<blog_id>")
+def delete_blog(blog_id):
+    mongo.db.blogs.remove({"_id": ObjectId(blog_id)})
+    flash('Blog  has been Successfully deleted!')
+    return redirect(url_for("get_blogs"))
 
 
 # error pages
