@@ -8,9 +8,13 @@
             <div class="input-field col s12">
              <i class="fas fa-archive prefix light-blue-text text-darken-4"></i>
                 <select id="category_name" name="category_name" class="validate" required>
-                    <option value="" disabled selected>Choose category</option>
+                    <option value="" disabled>Choose category</option>
                     {% for category in categories %}
+                        {% if category.category_name == blog.category_name %}
+                            <option value="{{ category.category_name}}" selected>{{ category.category_name}}</option>
+                        {% else %}
                         <option value="{{ category.category_name}}">{{ category.category_name}}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="category_name">Blog Catergory</label>
@@ -20,7 +24,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pen-fancy prefix light-blue-text text-darken-4"></i>
-                <input id="title" type="text" name="title" minlength="5" maxlength="100" class="validate" required>
+                <input id="title" type="text" name="title" value="{{ blog.title }}" minlength="5" maxlength="100" class="validate" required>
                 <label for="title">Blog Title</label>
             </div>
         </div>
@@ -29,7 +33,7 @@
             <div class="input-field col s12">
                 <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
                 <textarea id="content" name="content" minlength="5" maxlength="1000"
-                    class="materialize-textarea" required></textarea>
+                    class="materialize-textarea" required>{{- blog.content -}}</textarea>
                 <label for="content">Blog Content</label>
             </div>
         </div>
@@ -41,7 +45,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-clock prefix light-blue-text text-darken-4"></i>
-                <input id="read_time" type="text" name="read_time" minlength="5" maxlength="50"
+                <input id="read_time" type="text" name="read_time" value="{{ blog.read_time }}" minlength="5" maxlength="50"
                     class="timepicker validate" required>
                 <label for="read_time">Read Time</label>
             </div>
@@ -50,7 +54,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
-                <input id="published_date" type="text" name="published_date" minlength="5" maxlength="60"
+                <input id="published_date" type="text" name="published_date" value="{{ blog.published_date }}" minlength="5" maxlength="60"
                     class="datepicker validate" required>
                 <label for="published_date"> Publish Date</label>
             </div>
@@ -59,14 +63,19 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-hashtag prefix light-blue-text text-darken-4"></i>
-                <input id="tags" type="text" name="tags" minlength="5" maxlength="50"
+                <input id="tags" type="text" name="tags" minlength="5" maxlength="50" value="{{ blog.hashtag }}"
                     class="validate" required>
                 <label for="tags"> Hashtags</label>
             </div>
         </div>
-        <!-- submit button-->
+        <!--  cta buttons-->
         <div class="row">
             <div class="col s12 center-align">
+                <!-- cancel edit_blog button -->
+                <a href="{{ url_for('get_blogs') }}" class="btn-large red text-shadow">
+                    Cancel <i class="fas fa-times-circle right"></i>
+                </a>
+                <!-- submit edit_blog button-->
                 <button class="btn-large waves-effect waves-light text-shadow" type="submit" name="">Edit Blog
                     <i class="fas fa-edit right"></i>
                 </button>
