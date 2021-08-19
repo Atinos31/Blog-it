@@ -1,38 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
 <h3 class="light-blue-text text-darken-4 center-align header">Add a new blog</h3>
- <div class="row card-panel grey lighten-4">
+<div class="row card-panel grey lighten-4">
     <form class="col s12" method="POST" action="#">
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-pen-fancy prefix light-blue-text text-darken-4"></i>
-          <input id="title" type="text" name="title" minlength="5" maxlength="50" class="validate required">
-          <label for="title">Blog Title</label>
+        <div class="row">
+            <div class="input-field col s12">
+             <i class="fas fa-archive prefix light-blue-text text-darken-4"></i>
+                <select id="category_name" name="category_name" class="validate" required>
+                    <option value="" disabled selected>Choose blog category</option>
+                    {% for category in categories %}
+                        <option value="{{ category.category_name}}">{{ category.category_name}}</option>
+                    {% endfor %}
+                </select>
+                <label for="category_name">Blog Catergory</label>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-archive prefix light-blue-text text-darken-4"></i>
-          <input id="category_name" type="text"  name="category_name"  minlength="5" maxlength="50" class="validate">
-          <label for="category_name">Blog  Category</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pen-fancy prefix light-blue-text text-darken-4"></i>
+                <input id="title" type="text" name="title" minlength="5" maxlength="50" class="validate required">
+                <label for="title">Blog Title</label>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-             <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-          <textarea id="content"  name="content"  minlength="5" maxlength="1000" class="materialize-textarea"></textarea>
-          <label for="content">Blog Content</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                <textarea id="content" name="content" minlength="5" maxlength="1000"
+                    class="materialize-textarea"></textarea>
+                <label for="content">Blog Content</label>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
-          <input id="published_date" type="text" name="published_date" minlength="5" maxlength="50" class="datepicker validate required">
-          <label for="published_date"> Publish Date</label>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
+                <input id="published_date" type="text" name="published_date" minlength="5" maxlength="50"
+                    class="datepicker validate required">
+                <label for="published_date"> Publish Date</label>
+            </div>
         </div>
-      </div>
-      
     </form>
-  </div>
+</div>
 
 {% endblock %}

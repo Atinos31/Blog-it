@@ -135,11 +135,12 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-#add blogs
+# add blogs
 @app.route("/add_blog")
 def add_blog():
-    return render_template('add_blog.html')
-    
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template('add_blog.html', categories=categories)
+
 # error pages
 @app.errorhandler(500)
 def internal_server_error(e):
