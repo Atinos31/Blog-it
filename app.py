@@ -17,7 +17,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-
 @app.route("/home")
 def home():
     return render_template('home.html')
@@ -136,10 +135,25 @@ def profile(username):
 
 
 # add blogs
-@app.route("/add_blog")
+@app.route("/add_blog", methods=["GET", "POST"])
 def add_blog():
+    if request.method == "POST":
+        blog = {
+            "category_name": request.form.get("category_name"),
+            "title": request.form.get("title"),
+            "content": request.form.get("content"),
+            "img_url": request.form.get("img_url"),
+            "published_date": request.form.get("published_date"),
+            "tags": request.form.get("tags"),
+            "read_time": request.form.get("read_time"),
+            "author_id": session["user"]  
+        }
+        mongo.db.blogs.insert_one(blog)
+        flash('Blog Successfully Added')
+        return redirect(url_for("get_blogs"))
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template('add_blog.html', categories=categories)
+
 
 # error pages
 @app.errorhandler(500)

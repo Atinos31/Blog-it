@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h3>
-     Explore Recent Blogposts
+     Recent Blogposts
 </h3>
   
     
@@ -17,10 +17,11 @@
          <h3><strong>{{ blog.title }}</strong></h3>
          <hr>
           <p> {{ blog.content }}</p>
-          <p><small> <i class="fas fa-user-circle"></i> {{ blog.author_id }} </small></p>
-          <p></p>
+         
+          <p>{{blog.img_url}}</p>
+           <p><i class="fas fa-clock"></i>{{blog.read_time}} read</p>
           <p><small> <i>Published on</i>: {{ blog.published_date }}</small></p>
-          <p><i class="fas fa-clock"></i>{{blog.time}} mins read</p>
+          <p><em> by: <i class="fas fa-user-circle"></i> {{ blog.author_id }} </em></p>
           <p>{{blog.tags}}</p>
         </div>
     <li>
