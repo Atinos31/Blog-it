@@ -9,9 +9,15 @@
         {% for blog in blogs %}
     <li>
       <div class="collapsible-header white-text cyan darken-4 text-shadow">
+        <div class="col s3">
           <i class="fas fa-caret-down"></i>
+          <a class="waves-effect red btn-small" href="">Delete</a>
+          <a class="waves-effect teal accent-4 btn-small" href="">Edit</a>
+        </div>
+        <div class="col s9">
           <strong> {{ blog.category_name }}</strong>
 
+      </div>
       </div>
       <div class="collapsible-body">
          <h4><strong>{{ blog.title }}</strong></h4>

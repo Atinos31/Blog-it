@@ -42,18 +42,11 @@ def get_posts():
 def register():
     if request.method == "POST":
         # check if username already exists in db
-        user_email = mongo.db.form.get("email")
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        existing_email = mongo.db.users.find_one(
-            {"email": user_email})
         if existing_user:
-            flash("That Usernamme is already taken")
+            flash("That Username is already taken")
             return redirect(url_for("register"))
-        if existing_email:
-            flash("That email is already taken")
-            return redirect(url_for("register"))
-
         register = {
             "username": request.form.get("username").lower(),
             "user_email": request.form.get("email"),
@@ -64,7 +57,6 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        session["user"] = request.form.get("email")
         flash("Registration Successful!")
         return redirect(url_for("login", username=session["user"]))
     return render_template("register.html")
