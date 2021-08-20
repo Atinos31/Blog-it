@@ -30,6 +30,13 @@ def get_blogs():
     return render_template("blogs.html", blogs=blogs)
 
 
+# search route function
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    blogs = list(mongo.db.blogs.find({"$text": {"$search": query}}))
+    return render_template("blogs.html", blogs=blogs)
+
 # function to render the post page
 @app.route("/get_posts")
 def get_posts():
@@ -205,8 +212,6 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
-
-
 # error pages
 @app.errorhandler(500)
 def internal_server_error(e):
@@ -218,6 +223,7 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
+# logout route
 @app.route("/logout")
 def logout():
     # remove user from session cookies
