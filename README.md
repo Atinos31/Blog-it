@@ -74,7 +74,7 @@ The site offers the additional functionality; reset passwords, change passwords 
 
 ## User Experience (UX)
 ## Strategy
-Every has got something interesting to say or even full depth of knowledge about a particular subject.
+Everyone has got something interesting to say or even full depth of knowledge about a particular subject.
 Blog it enables people to blog about anything and everything and also provides users with a way to communicate with others and attain information about a particular subject.
 
 
@@ -84,7 +84,7 @@ Blog it enables people to blog about anything and everything and also provides u
 * I would like to find out what the site is about
 * i would like to explore blogposts written by other bloggers without registering
 * I would like to easily register 
-* I would like to be able to add my profile details
+* I would like to be able to add my profile details ie username
 
 
 #### Existing User
@@ -100,37 +100,33 @@ Blog it enables people to blog about anything and everything and also provides u
 * I would like to receive any feedback in comments or messages on the site for new posts.
 * I would like to leave a comment for blogs that interest me. I understand I’ll have to sign in to do this.
 * I would like to be able to upload a profile photo or change my profile photo. 
-i.  If I don’t have a profile photo, I'd like to have a choice of placeholder. 
-
-
-
+i.  If I don’t have a profile photo, I'd like to have a choice of placeholder (default avatar). 
 
 ## Features
  
 ### Existing Features
 - User Registration: allows new users to create an account so they can log in.
 - User Log-in: allows existing users to log in using their username or email and password. Passwords are hashed for security reasons. Log-in is required to read , post your own blogs and give feedback. 
-- User Profiles: allow users to tell others about themselves, provide a name,description.date stamp,followers. 
+- User Profiles: allow users to tell others about themselves, provide a username,bio.date stamp, and maybe followers. 
 - A user must be logged in to edit their own profile. A user cannot edit someone else's profile. 
 - A user must be logged in to view messages and interact with other members.
 - Password reset page- allows users to reset their password incase they had forgotten it.
-- Expore: This allows both non registered and registered users to explore blogposts in the system that all the users are writting.
+- Expore: This allows both non registered and registered users to explore blogposts in the system that all the users have written.
 - Search: allows a registed bloggers  to search for blogposts by simple words and more complex phrases
 - Logout : allows a user to securely logout of the page.
 - Pagination- user can search other blogposts and users using pagination of old and new posts.
 - User comments: users can interact with each other by leaving comments on eachothers blogposts.
 - Followers: users are able to follow othe users and choose to filter the blog post list on the home page to include only those from users they follow
-- live translation feature for blogposts written in other languages.
-- Personalised timeline that shows all the blogposts a user is interested in.
-- Admin Area/Meet the Team: introduces users to the admin team. If user is an admin, they will also see reports by users that may require admin action. 
+- Admin-If user is an admin, He or she can edit and delete blog categories. 
 
 ### Features Left to Implement
 - Allow users to upload their own cover image for a blog.
 - Allow bloggers to rate other people's blogposts.
-- Allow bloggers to search for blogposts based on other users' average rating.
+- Allow bloggers to search for blogposts based on other users' ratings.
 - Allow admins to block/suspend users when necessary.
-
-
+- follower feature
+- comments feature
+- upload profile pic
 ***
 
 
@@ -150,7 +146,6 @@ i.  If I don’t have a profile photo, I'd like to have a choice of placeholder.
 #### Front End
 * [Google fonts](https://fonts.google.com/)  - for the font
 * [Font Awesome](https://fontawesome.com/) - for icons used
-* [Canva](https://www.canva.com/)- Designing the background, default image and Icon
 
 #### Backend 
 * [MongoDB](https://www.mongodb.com/)
@@ -173,7 +168,7 @@ I used the following Extensions:
 * [Flask Mail](https://pythonhosted.org/Flask-Mail/) - For emailing users
 * [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) - For interacting with the MongoDB database
 * [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/utils/) - For providing security’s, password_hash, check_password_hash
-* flask-wtf - (https://flask-wtf.readthedocs.io/en/0.15.x/) -  to enable and ease out the process of designing forms in the app
+
 
 
 #### Testing Tools
@@ -198,7 +193,7 @@ I used the following Extensions:
 
 * Sign up to MongoDB
 * Create a new shared Cluster
-* Select a Cloud provider and region (I used AWS and Ireland)
+* Select a Cloud provider and region
 * For free use  m0 cluster tier
 * Give your cluster a name
 * Go to collections and add a database
@@ -431,10 +426,8 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
    - homepage image2 is from pexels.com by Tony Schnagly
    [man in brown sweater using mac book pro](https://www.pexels.com/photo/man-in-brown-sweater-using-macbook-pro-5588211/)
    - blogpost pics
-   [Photo by ALEXGTACAR from Pexels](https://www.pexels.com/photo/shallow-focus-photography-of-blue-alpine-car-1592384/)
-   [Photo by mahmoud abdelwahab from Pexels](https://www.pexels.com/photo/cold-snow-businessman-fashion-7083673/)
-
+   
 
 ### Acknowledgements
 
-- I based the layout for the site on this [DIY_]().
+- I based the layout for the site on this [flask mini project-code institute]().

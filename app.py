@@ -157,6 +157,13 @@ def delete_blog(blog_id):
     return redirect(url_for("get_blogs"))
 
 
+# get categories
+@app.route("/get_categories")
+def get_categories():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template("categories.html", categories=categories)
+
+
 # error pages
 @app.errorhandler(500)
 def internal_server_error(e):
