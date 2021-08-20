@@ -157,11 +157,31 @@ def delete_blog(blog_id):
     return redirect(url_for("get_blogs"))
 
 
-# get categories
+# create blog categories
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
+
+
+# add blog categories
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    """ if the function is called using the post method
+    then grab data from the form and insert it into the databse,
+    otherwise the default method of get displays the empty form 
+    available to the admin.
+    """
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.insert_one(category)
+        flash('New Category Added!')
+        return redirect(url_for("get_categories"))
+    
+    return render_template("add_category.html")
+
 
 
 # error pages

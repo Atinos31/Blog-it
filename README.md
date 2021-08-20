@@ -117,7 +117,7 @@ i.  If I don’t have a profile photo, I'd like to have a choice of placeholder 
 - Pagination- user can search other blogposts and users using pagination of old and new posts.
 - User comments: users can interact with each other by leaving comments on eachothers blogposts.
 - Followers: users are able to follow othe users and choose to filter the blog post list on the home page to include only those from users they follow
-- Admin-If user is an admin, He or she can edit and delete blog categories. 
+- Admin role - The admin can Create ,Read ,Update and Delete blog categories. 
 
 ### Features Left to Implement
 - Allow users to upload their own cover image for a blog.
