@@ -23,7 +23,7 @@ def home():
 
 
 @app.route("/")
-# function to render the explore page
+# route function to render the explore page
 @app.route("/get_blogs")
 def get_blogs():
     blogs = list(mongo.db.blogs.find())
@@ -37,7 +37,7 @@ def get_posts():
     return render_template("post.html", posts=posts)
 
 
-# create a register function
+# create a register route function
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -63,7 +63,7 @@ def register():
     return render_template("register.html")
 
 
-#login function
+# login  route function
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -93,7 +93,7 @@ def login():
     return render_template("login.html")
 
 
-# profile function
+# create profile route function
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -106,7 +106,7 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-# add blogs
+# add / create blogs
 @app.route("/add_blog", methods=["GET", "POST"])
 def add_blog():
     if request.method == "POST":
@@ -169,7 +169,7 @@ def get_categories():
 def add_category():
     """ if the function is called using the post method
     then grab data from the form and insert it into the databse,
-    otherwise the default method of get displays the empty form 
+    otherwise the default method of get displays the empty form
     available to the admin.
     """
     if request.method == "POST":
@@ -179,9 +179,22 @@ def add_category():
         mongo.db.categories.insert_one(category)
         flash('New Category Added!')
         return redirect(url_for("get_categories"))
-    
+
     return render_template("add_category.html")
 
+
+# edit/update category
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category SuccessfullY Updated")
+        return redirect(url_for("get_categories"))
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
 
 
 # error pages
