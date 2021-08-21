@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Crimson+Pro:ital,wght@0,200;0,400;0,500;1,300;1,500&family=Josefin+Slab:wght@100&family=Lexend+Deca&family=Livvic:ital,wght@0,200;0,400;1,400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
 /*------------------- global styles------------------------------*/
 :root {
     /*      Theme colors        */
@@ -65,10 +65,9 @@ h2 {
 }
 
 p {
-    font-family: var(--Josefin);
+    font-family: Merriweather, serif;
     font-weight: 400;
-    font-style: italic;
-    font-size: medium;
+    font-size: 20px;
     color: var(--text-gray);
 }
 
