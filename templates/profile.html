@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% block title %}<h3 class="center-align">Hi, {{username}}!</h3>{% endblock %}
+{% block title %}<h2 class="flow-text cyan-text">Hi, {{username}}!</h2>{% endblock %}
 <!--flash messages-->
 {% with messages = get_flashed_messages() %}
 {% if messages|length > 0 %}
@@ -12,9 +12,22 @@
     </div>
     {% endif %}
 {% endwith %}
+<!-- my profile-->
+<ul class="collection">
+    <li class="collection-item avatar">
+      <img src="{{url_for('static', filename='profile_pics/default.png')}}" alt="default avatar" class="circle" >
+      <span class="title">{{username}}</span>
+      <p>{{username.bio}}blogger</p>
+      <p>{{username.location}}
+          <i class="fas fa-map-marker-alt"></i><br>
+         {{username.memeber_since}}member since:
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">message</i></a>
+    </li>
+    </ul>
 <!-- my blogs -->
 <div>
-<h3 class="center-align"> {{username}}'s Blogs</h3>
+<h3 class="center-align flow-text"> {{username}}'s Blogs</h3>
 {% if blogs|length >0 %}
 <ul class="collapsible popout">
   {% for blog in blogs %}
