@@ -1,10 +1,10 @@
 # Blog it
 
-![Main Mockup]()
+![Main Mockup](static/images/mockupB.png)
 
-[Link to Live Website]()
+[Link to Live Website](https://dashboard.heroku.com/apps/blog-it2)
 
-[GitHub Repo](https://github.com/)
+[GitHub Repo](https://github.com/Atinos31/blog-it)
 Happy blogging!
 
 
@@ -80,27 +80,53 @@ Blog it enables people to blog about anything and everything and also provides u
 
 ### User Stories 
 
+### A typical user of this site would:
+ - Have a interest in writting blogs
+ - Reading blogs from other bloggers
+ - Have an interest in being part of a blogging community.
+ - Have an interest in gaining knowledge far beyond his/ her neighbourhood or circle.
+ - connect with fellow bloggers from around the world.
+
+
 #### New User
-* I would like to find out what the site is about
-* i would like to explore blogposts written by other bloggers without registering
-* I would like to easily register 
-* I would like to be able to add my profile details ie username
+1. As a new user to the website, I want to understand the purpose of the site and how to interact with it.
+2. As a new user,i want to explore blogposts written by other bloggers easily without registering
+3.  As a new user ,I would like to easily register 
+
 
 
 #### Existing User
-* I want to be able to sign in and out easily
-* I would like to be able to delete my account
-* i would like to be able to reset my password incase i forgot my previous password
-* I would like to be able to add/read/edit and delete my blogposts.
-* I would like to be able to check out other user's profiles.
-* I would like to follow users that interest me.
-* I would like other users to follow me.
-* I would like to see the blogs by other people to decide which blog I would like to read.
-* I would like to easily add new blogs.
-* I would like to receive any feedback in comments or messages on the site for new posts.
-* I would like to leave a comment for blogs that interest me. I understand I’ll have to sign in to do this.
-* I would like to be able to upload a profile photo or change my profile photo. 
+1.As an existing user to the website, I want to be able to easily sign in.
+2.As an existing user to the website, I would like to be able to delete my account
+3.As an existing user to the website, i would like to be able to reset my password incase i forgot my previous password
+4.As an existing user to the website, I would like to be able to add/read/edit and delete my blogposts.
+5.As an existing user to the website,I would like to see the blogs by other people to decide which blog I would like to read.
+6.As an existing user to the website, I would like to easily add new blogs.
+7.As an existing user to the website, I would like to be able to upload a profile photo or change my profile photo. 
 i.  If I don’t have a profile photo, I'd like to have a choice of placeholder (default avatar). 
+
+
+## Scope 
+Create a simple, intuitive, and responsive website that acts as a respository of blogs that users can browse and contribute to. 
+
+The structure should adhere to convention and be simple and intuitive, ensuring the user always knows where they are, how they got there and how to get back to 
+where they started.
+
+The design should be simple, utilising the same colour palette, 
+
+Any addition features or functionally are out of scope at this stage.
+
+### User Goals:
+- To find blogs from different authors and various categories.
+- To be able to write , read, edit and delete blogs.
+- To be part of a social blogging platform.
+
+### Website Owner's goals:
+ - To build on and expand the community for bloggers and readers around the world.
+ - To create a safe and welcoming platform for users to share their passion for blogging.
+ - To encourage bloggers to create their own blogs for other readers.
+ - The ability for admin to edit and delete any inappropriate blogs to keep the platform safe and welcome for bloggers.
+
 
 ## Features
  
@@ -114,9 +140,9 @@ i.  If I don’t have a profile photo, I'd like to have a choice of placeholder 
 - Expore: This allows both non registered and registered users to explore blogposts in the system that all the users have written.
 - Search: allows a registed bloggers  to search for blogposts by simple words and more complex phrases
 - Logout : allows a user to securely logout of the page.
-- Pagination- user can search other blogposts and users using pagination of old and new posts.
-- User comments: users can interact with each other by leaving comments on eachothers blogposts.
-- Followers: users are able to follow othe users and choose to filter the blog post list on the home page to include only those from users they follow
+
+
+### admin
 - Admin role - The admin can Create ,Read ,Update and Delete blog categories. 
 
 ### Features Left to Implement
@@ -127,8 +153,49 @@ i.  If I don’t have a profile photo, I'd like to have a choice of placeholder 
 - follower feature
 - comments feature
 - upload profile pic
+- incoporate a blog editor in the write new blog page.
+- implement a better editor in the write a blog page to ensure proper paragraghing/ design and possibly add symbols and image
 ***
 
+## Site implemented Features
+##### Every page on this site also incorporates the following features:
+- A logo in the top left hand corner, that not only forms part of the branding and design of the site but also as is consistent with a user's expectations, clicking the logo will return the user to the home page of the site.
+
+- A responsive, collapsible navigation bar, allowing users to easily navigate the site on any device.
+## Pages
+ ### All users
+
+#### Home
+The home page introduced users to the site and with a call to action button to direct thm to register. users may also contact the site owner incase of any unforeseen issues.
+
+#### Explore
+  Here the both unregisstered and registered users may view and read blogs created by registered logged in users.
+  The user can also search for a blog based on  single words or text phrases.
+
+#### Register
+The registration page allows a user to register an account. To register a user is required provide a username, email and password. Validation has been added to form. The Registration page also provides a link to the Log In page if a user has already registered and simply needs to log in, once a user is registered , he or she is redirected to the log in page.
+
+#### Log In
+  The Log in page allows registered user to log in to their account in order to view their own blogss, add a new blog, edit or delete one of their own blogs. The Log In page also provides a link to the Registration page if a user hasn't yet registered.
+
+#### Write a new blog
+  This page displays a form to the user to enable them to create a new blog. The user first selects a category from a dropdown list, then enter the title of their blog, content,publish_date ,read_time, created_by and hashtags
+  the content/text area allows up to 2000 words and is expandable. The user then clicks submit and their blog is saved in MongoDB and visible on the site.
+  This page is not accessible to users that are not logged in.
+
+#### Edit Blog
+    This page displays a form to the user to enable them to edit their blogs. The same form that is used to add blogs is shown again and is prefilled with the original information. The user can then edit their blog and click the edit button to update their blog, there is also is the option to click cancel if they have changed their mind and no longer want to make any edits.
+    This page is specific to the blog that has been seleted to edit and is only available to the creater of the blog when they are logged in.
+#### Admin Only
+  ##### Categories
+  This is an admin only area and allows an admin to create, edit and delete categories on the front end. This page displays a list of categories available to users, the categories have an edit and delete icons to allow an admin to either make edits to a category or to delete one. The page also has an 'Add Category' button to allow an admin to create a new category.
+
+
+## Database Design
+  All user generated content is stored in mongo db. There are three collections for blogit db.
+  1. users
+  2. categories 
+  3. blogs
 
 ## Technologies
 #### Languages & Frameworks 
@@ -139,6 +206,7 @@ i.  If I don’t have a profile photo, I'd like to have a choice of placeholder 
 * [Flask](#flask) - Framework + Extensions
 * [Materialize](https://materializecss.com/) - CSS Framework for structure, buttons, and some styling
 * [jQuery](https://jquery.com/) - Materialize initialising
+* [Favicon](https://favicon.io/) - was used for creating the favicon
 * Gitpod.io - for writing the code. Using the command line for committing and pushing to Git Hub
 * GitHub - hosting repositories
 * GIT - Pushing code to repositories
@@ -169,7 +237,11 @@ I used the following Extensions:
 * [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) - For interacting with the MongoDB database
 * [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/utils/) - For providing security’s, password_hash, check_password_hash
 
+# Testing 
+I tested the site in the following ways:
+- I used the inspector tool to test the site in all the screen sizes and devices available in the Chrome developer tool. In addition to this I also tested it on live devices, including but not limited to iPhone, iPad, MacBook Pro, MotoG7.
 
+- I also viewed my site in multiple browsers including, Chrome, Firefox and Safari in terms of design, responsiveness and functionality
 
 #### Testing Tools
 * [HTML Validator](https://validator.w3.org/) - checking the validity of code
@@ -177,14 +249,178 @@ I used the following Extensions:
 * [JSHint](https://jshint.com/)- Testing and checking JS.  - checking for errors in code
 * [Pep8 Online](http://pep8online.com/) - Testing and checking PEP8 compliance 
 * [Am I Responsive](http://ami.responsivedesign.is/#) - checking whether the site is responsive. 
-* [Internet Marketing Ninjas](https://www.internetmarketingninjas.com/online-spell-checker.php) - spell check
-* [Python Tutor](http://pythontutor.com/) - For function testing 
-* [Studio 3T](https://studio3t.com/) - Testing Database Schema 
-* [Regrex101](https://regex101.com/r/OnE0BG/1/) - Testing Regrex Patterns
 * DEV Tools - Lighthouse
 
+#### Validation reports
+  - All links were tested to ensure there were no broken links and that all links to external sites open in a new tab.
+  - In addition to testing with the inspector tool, real devices and validation tools, I also work through a series of test cases, to ensure that the site met the users stories and that any functionality that was added worked as intended.
 
+### User Story Test Cases
+
+#### New Visitors
+
+1.  As a new visitor to the website, I want to understand the purpose of the site and how to interact with it.
+- The home page of the site features a title and an introduction with an explanation of the purpose of the site and how to interact with it.
+2. As a new visitor to the website, I want to find blogs easily from fellow blogggers without the need to register.
+- There is no requirement to register to view blogs. The blogss are the main feature of the site and are visible from the explore page for all visitors to view.
+4. As a new visitor to the website, I want to be able to register easily.
+- The nagvigation is clear and has a item named 'Register', when a user clicks on this nav item they are brought to a simple form, with clearly labelled fields, placehold text and a clearly marked 'Register' button.
+
+#### Logged In Visitors
+
+1. As a logged in visitor to the website, I want to be able to easily add a blog..
+- When a user logs into the site there are now options available to them in the navigation bar. When a users click 'write a blog' in the navigation bar, they are taken to the add_blog page. This page displays a form to the user to enable them to create a blog, The user first selects a category from a dropdown list, then enter the title,content,date,created_by, read_time and tags, and finally selected a . The user then clicks submit and their blog is saved in MongoDB and visible in the site.
+2. As a logged in visitor to the website, I want to be able to easily edit my blogs.
+- When a user logs into the site there are taken to their blogs, from there they can easily view, or select to edit or delete their blogs. If they click on the edit button within a blog listings they are taken to a page that consists of a form that is prepopulated with the orginal blog data. The user can then then edit their blog and click the edit button to update the blog , there is also the option to click cancel if they have changed their mind and no longer want to make any edits.
+3. As a logged in visitor to the website, I want to be able to easily delete my blogs.
+- When a user logs into the site there are taken to their blogs, from there they can easily view, or select to edit or delete their blogs. If they click on the delete button within a blog listings a pop up modal appears asking the user to verify that they want to delete their blog. If the users click the delete button on the modal, their blog is delete from the database and no longer appears in the site.
+4. As a logged in visitor to the website, I want to be given visual confirmation when I edit or delete my blog that the update has been successful.
+When a user is logged in and and adds, edits or deletes a blog, a message is flashed to confirm that the action has been carried out successfully.
+
+#### Admin
+
+1. As an admin, I want to be able to edit or delete any blogs to remove any inappropriate content.
+When an admin is logged in, the edit and delete buttons are available to them on all blogs allowing then to edit or delete any inappropriate blogs.
+2. As an admin, I want to be able to easily add, edit or delete categories within in the site rather than having to access MongoDB.
+3. When an admin is logged in a new nav item is added called Categories. Clicking on this page allows an admin to view exisiting catgories, as well as edit or delete them. Additionally there is an add category button allowing then to add a new category on the front end.
+
+#### Functionality Test Cases
+#### Navigation:
+1. While logged out, make sure you can see all the nav links for logged out and unregistered users:
+   - home
+   - explore 
+   - sign in
+   - register
+
+#### Home:
+2. While se logged out make sure that you can see welcome page that are on the home page, and that it includes the following:
+- nav-links
+- 2 background parallax images
+- 3 column information/how to get started
+- 1 CTA get started button
+- contact us btn
+- footer with quick links info , logo and copyright.
+
+
+#### Explore:  
+3. While logged out make sure that you can see all recommendations that are on the home page, and that each recommendations included the follow:
+- Category name_
+- title
+- content
+- tags
+- Created by
+- published date
+ 
+ #### login
+4. While logged in, make sure  you can see all blogs and that any blogs that was created by you, now has the edit and delete button on them. you can also view your profile.
+
+5. While logged in as an admin, make sure you can view all blogs  and blog categories and that all categories blogs now have the edit and delete button. so the admin may delete inappropriate blogs created by users  but may not  edit blogs  created by other users.
+- admin can delete and edit blogs created by him /her
+- admin can also create edit and delete  blog categories
+
+### Home: Search funtionality
+
+Type a word into the search box that you know there isn't match for in the DB, ensure that the flash messaging saying that "Sorry ,No results were found ".
+Click the reset button and ensure all blogs are visble again.
+blogs that match that criteria are visible.
+Home: Filter functionality
+
+Click on the word filter above the blogs and ensure the filter option buttons are visible.
+Click on each button in turn and ensure that only recommendations that match that filter are visble.
+Ensure there is one filter option that has no corresponding entries in the DB and then click on the option, ensure the flash messagin saying "Sorry ,No results were found".
+
+### Registration:
+
+1. Firstly complete the fields, click submit and ensure that the data is saved to the DB.
+2. Attempt to submit the form with empty fields and ensure that valitation errors are displayed.
+3. Attempt to submit the form without a correctly formatted email address and ensure validation error is displayed.
+4. Log in with valid data and ensure flash message is show to confirm that the data has been submitted.
+5. Log in with valid data and enusre you are taken to the  profile page.
+6. Attempt to register with a username that you know already exists and ensure the error message is shown and you are redirected back to the register form.
+7. Attempt to register with an email that you know already exists and ensure the error message is shown and you are redirected back to the register form.
+8. Click on the 'Log In' link at the bottom of the registration form and ensure you are taken to the Log In screen.
+9. While logged out ensure that you can only see 'Home','Explore 'Log In', and 'Register' in the navigation bar.
+
+### Log In:
+
+1. Log in with valid credentials and ensure you are logged in and directed to your profile page and you can now see 'profile', 'write a blog' and 'Log Out' in the navigation.
+2. Attempt to log in with invalid credentials and ensure that an error message is displayed on screen and you are redirected to the Log In screen.
+3. Click on the 'Register here' link at the bottom of the form and ensure you are taken to the Registration Screen.
+
+### Log Out:
+
+1. While logged in, click on the 'Log Out' item in the navigation bar and ensure that you are logged out, that you see the success confirmation message and that you can now only see 'Home', 'Log In', and 'Register' in the navigation bar.
+### Profile:
+
+While logged in, navigate to the explore page and ensure you can see all the blogs that you have added.
+While on the profile page ensure that a greeting and your username are visible in your profile.
+While on the explore page click on the edit button and ensure that the Edit blog page opens.
+While on the explore page click on the delete button and ensure that a pop up verification modal appears.
+
+### write a blog:
+
+1. While logged in, navigate to the write a blog page and ensure the form loads and all fields are visible
+2. While on the write a blog page ensure that all the categories are visible in the category drop down.
+3. While on the Write a blog page ensure that all the levels are visible in the category drop down.
+4. While on the write a blog page try to submit the form with fields left blank, ensure that custom valitation message is shown. Do this with each field in turn.
+5. While on the write a blog page  check the textarea/ content feield to see the data length - only upto 2000 words allowed.
+6. While on the write a blog page try to submit the form with blank spaces entered into the fields and ensure validation messages are shown.
+7. While on the write ablog page complete all fields and submit the form, ensure the new entry is saved in the DB and is visible in the recommendations page.
+
+### Edit blog:
+
+1. While logged in, navigate to the Explore,select blogs written by you and click on edit button, ensure the form loads and all fields are visible and pre populated with the data for that blog.
+2. While on the Edit blog form ensure that all the categories are visible in the category drop down.
+3. While on the Edit blog form try to submit the form with fields left blank, ensure that custom valitation message is shown. Do this with each field in turn.
+4. While on the Edit blog form try to submit the form with blank spaces entered into the fields and ensure validation messages are shown.
+5. While on the Edit blog form make an edit to the blog and click the edit button, ensure the new edited version is saved in the DB and the edited version is visible in the explore page.
+6. While on the Edit blog form don't make any changes and click the cancel button, ensure you are taken back to the explore page.
+7. Delete blog: Carry out the tests below from the explore page
+- Click the delete button within a blog, ensure that a delete verification modal appears.
+When the modal has appeared, click the cancel button and ensure the modal closes and theblog is still visible on the page.
+- Click  this time click the delete button. Ensure the blog is deleted and the confrimation flash message is visible. Take care to ensure that the correct blog has been deleted i.e. the one in which you click the delete button.
+
+### Category & Add Category Pages (Admin Only):
+
+1. While logged in and admin navigate to the Categories page and ensure all existing categories are visible with the option to edit or delete.
+2. While on the Categories page click on the Add Category button and ensure the form opens.
+3. While on the Add Categories page try to submit the form with fields left blank, ensure that custom valitation message is shown. Do this with each field in turn.
+4. While on the Add Categories page try to submit the form with fields left blank, ensure that custom valitation message is shown. Do this with each field in turn.
+5. While on the Add Categories page try to submit the form with blank spaces entered into the fields and ensure validation messages are shown.
+6. While on the Add Categories page complete all fields and submit the form, ensure the new entry is saved in the DB and is visible in the categories page.
+
+### Edit Category (Admin Only):
+
+1. While logged in and admin navigate to the Categories page and click the edit button on one of the categories and form loads and all fields are visible and pre populated with the data for that category.
+2. While on the Edit Categories page try to submit the form with fields left blank, ensure that custom valitation message is shown. Do this with both fields.
+3. While on the Edit Categories page try to submit the form with blank spaces entered into the fields and ensure validation messages are shown.
+4. While on the Edit Categories page make an edit to the blog and click the edit button, ensure the new edited version is saved in the DB and the edited version is visible in the categories page.
+5. While on the Edit Categories page don't make any changes and click the cancel button, ensure you are taken back to the categories page.
+
+### Delete Category (Admin Only):
+
+1. Click the delete button within a category, ensure that a delete verification modal appears.
+When the modal has appeared, click the cancel button and ensure the modal closes and the category is still visible on the page.
+2. Click the delete button again, this time click the delete button. Ensure the category is deleted and the confrimation flash message is visible. Take care to ensure that the correct category has been deleted i.e. the one in which you click the delete button.
 ***
+
+## Accessibility
+In addition to all the above testing I also checked my site with accessibility tools in the inspector.
+- ![accesiblity screen short]()
+
+## Bugs
+During the development of this site I encountered a number of different bugs that have been now been fixed. A few notable bugs include the following:
+- During testing it was highlighted that a user could enter empty spaces and submit the forms. I search online and adapted my code based on information using the pattern attribute class="validate" and ensuring all fields were required. users can see a small text message advising them on how to fill the form incase they have gotten it wrong
+- I also used "validateMaterializeSelect();" from materialize to validate the option selected value while choosing catergories in the add blog form - this is from code institute mini flask project.
+- for admin to have acess to delete blogs created by users i had to try out nesting jinja templates in the blogs.html.
+  >
+          {% if session.user|lower == "admin"|lower %}
+              <a class="waves-effect red btn-small" href="{{ url_for('delete_blog', blog_id=blog._id)}}">Delete</a>
+          {% endif %}
+  >
+
+
+
 #### Technology Configuration
 
 #### MongoDB 
@@ -213,15 +449,6 @@ I have chosen to use Gmail as my mail provider alongside [Flask Mail](https://py
 You will need to ensure you set your email provider up  to Allow less secure apps otherwise Gmail will block you being able to send/receive emails through the application.  
 You will also need to enable IMAP as well.  You can find some helpful tips [Flask Mail Help](https://www.twilio.com/blog/2018/03/send-email-programmatically-with-gmail-python-and-flask.html)
 I have used Gmail’s smtp server.  -  see [Configuration](#Configeration) to set up your application configurations
-
-
-***
-
-## Testing 
-
-[TESTING DOC ](docs/testing.md)
-
-Please see the testing document for Testing
 
 
 ***
@@ -415,9 +642,14 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
     ``` 
 1. Run the project in your terminal using the command `python app.py` (like pip, for Unix-based systems you may need to use `python3`).
 
-## Credits
+# Credits
 
 ### Content
+#### The content of the site was written by myself and inspired by the idea of creating a  social blogging site that has room for improvement as i improve on my skills and make it fully functional with time.
+
+### Code
+ * Code for my navigation and footer was from materialize navbar and customised to my liking.
+ * I adapted the code from materialize documentation examples Bootstrap documenation for the main structure of the create blog form.
 
 
 ### Media
@@ -429,5 +661,9 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
    
 
 ### Acknowledgements
-
 - I based the layout for the site on this [flask mini project-code institute]().
+- My color scheme for this site was based on different shades of green,teal,cyan and blue. I wanted a colour that is easy on the eyes as bloggers may spend hours of the screen.
+- I would also like to thank the team at Tutor support, who helped me solve some issues I encountered due to the recent Gitpod upgrade as well helping me solve an issue and connection with mongodb.
+- Full stack whattsapp group who are happily available to help fix an issue.
+- A final thank to my mentor gbenga_mentor who has advised and guided me through this Milestone 3 project.
+

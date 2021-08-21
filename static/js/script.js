@@ -4,7 +4,8 @@
     $('.modal').modal();
     $('.parallax').parallax();
     $('#textarea1').val('');
-  M.textareaAutoResize($('#textarea1'));
+    $('input#input_text, textarea#content').characterCounter();
+  M.textareaAutoResize($('#content'));
    $('select').formSelect();
   $('.datepicker').datepicker({
       format:"dd mmmm,yyyy",

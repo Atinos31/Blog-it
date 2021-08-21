@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson import json_util
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 if os.path.exists("env.py"):
     import env
 
@@ -19,12 +20,16 @@ mongo = PyMongo(app)
 
 @app.route("/home")
 def home():
+    """
+    Renders home page when site is loaded.
+    """
     return render_template('home.html')
 
 
 @app.route("/")
 # route function to render the explore page
 @app.route("/get_blogs")
+#all the blogs written by users
 def get_blogs():
     blogs = list(mongo.db.blogs.find())
     return render_template("blogs.html", blogs=blogs)
@@ -33,15 +38,12 @@ def get_blogs():
 # search route function
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """ Passes querys from  the form then
+    searches the Database index forany matching criteria
+    """
     query = request.form.get("query")
     blogs = list(mongo.db.blogs.find({"$text": {"$search": query}}))
     return render_template("blogs.html", blogs=blogs)
-
-# function to render the post page
-@app.route("/get_posts")
-def get_posts():
-    posts = list(mongo.db.posts.find())
-    return render_template("post.html", posts=posts)
 
 
 # create a register route function
@@ -49,23 +51,26 @@ def get_posts():
 def register():
     if request.method == "POST":
         # check if username already exists in db
+        user_email = request.form.get('email')
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-
+        
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "user_email": request.form.get("email").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "is_admin": False
         }
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
+        flash("Registration successful! please login")
+        return redirect(url_for("profile", username=session["user"], user_email=user_email))
 
     return render_template("register.html")
 
@@ -74,7 +79,9 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        # check if username exists in db
+        """
+          Login user after checking if user is in the Database
+        """
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -83,7 +90,7 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                         session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
+                        flash("You are logged in as: {}".format(
                             request.form.get("username")))
                         return redirect(url_for(
                             "profile", username=session["user"]))
@@ -101,16 +108,31 @@ def login():
 
 
 # create profile route function
-@app.route("/profile/<username>", methods=["GET", "POST"])
+@app.route("/profile/<username>")
 def profile(username):
-    # grab the session user's username from db
+    # grab the session user's username from db , display user's blogs on thier profile
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-
+    my_blogs = list(mongo.db.blogs.find(
+        {"created_by": session["user"]}).sort("_id", -1))
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template(
+            "profile.html", username=username, my_blogs=my_blogs)
 
     return redirect(url_for("login"))
+
+
+@app.route("/upload")
+def upload_file():
+    return render_template('profile.html')
+
+
+@app.route('/uploader', methods=["GET", "POST"])
+def uploader():
+    if request.method == "POST":
+        f = request.files["file"]
+        f.save(secure_filename(f.filename))
+        return 'file uploaded successfully'
 
 
 # add / create blogs
@@ -223,7 +245,7 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
-# logout route
+# logout route implementation
 @app.route("/logout")
 def logout():
     # remove user from session cookies
