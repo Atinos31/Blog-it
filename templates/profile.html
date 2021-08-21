@@ -13,6 +13,51 @@
     {% endif %}
 {% endwith %}
 <!-- my blogs -->
-<h2> My Profile</h2>
-
+<div>
+<h3 class="center-align"> {{username}}'s Blogs</h3>
+{% if blogs|length >0 %}
+<ul class="collapsible popout">
+  {% for blog in blogs %}
+  <li>
+    <div class="collapsible-header white-text  blue-grey darken-1">
+      <div class="col s3">
+        <i class="fas fa-caret-down"></i>
+        {% if session.user|lower == blog.created_by|lower %}
+        <a class="waves-effect red btn-small modal-trigger" href="#modal1">Delete</a>
+        <!-- delete by creater verification modal-->
+        <!-- Modal Trigger -->
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content grey lighten-4">
+            <h4 class="cyan-text">Delete blog</h4>
+            <p> Are you sure you want to delete this blog?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="{{ url_for('get_blogs')}}" class="modal-close waves-effect waves-green btn-small">Cancel</a>
+            <a href="{{ url_for('delete_blog', blog_id=blog._id)}}"
+              class="modal-close waves-effect red btn-small">Delete</a>
+          </div>
+        </div>
+        <a class="waves-effect teal accent-4 btn-small" href="{{ url_for('edit_blog', blog_id=blog._id)}}">Edit</a>
+        {% endif %}
+        
+      </div>
+      <div class="col s9">
+        <strong> {{ blog.category_name }}</strong>
+      </div>
+    </div>
+    <div class="collapsible-body">
+      <h4><strong>{{ blog.title }}</strong></h4>
+      <hr>
+      <p> {{ blog.content }}</p>
+      <p>{{blog.img_url}}</p>
+      <p><i class="fas fa-clock"></i>{{blog.read_time}} read</p>
+      <p><small> <i>On</i>: {{ blog.published_date }}</small></p>
+      <p><em> by: <i class="fas fa-user-circle"></i> {{ blog.created_by }} </em></p>
+      <p>{{blog.tags}}</p>
+    </div>
+  <li>
+    {% endfor %}
+</ul>
+{% endif %}
 {% endblock %}

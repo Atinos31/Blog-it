@@ -51,7 +51,7 @@ def search():
 def register():
     if request.method == "POST":
         # check if username already exists in db
-        user_email = request.form.get('email')
+        email = request.form.get('email')
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         
@@ -61,7 +61,7 @@ def register():
 
         register = {
             "username": request.form.get("username").lower(),
-            "user_email": request.form.get("email").lower(),
+            "email": request.form.get("email").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "is_admin": False
         }
@@ -70,7 +70,8 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration successful! please login")
-        return redirect(url_for("profile", username=session["user"], user_email=user_email))
+        return redirect(url_for(
+            "profile", username=session["user"], email=email))
 
     return render_template("register.html")
 
@@ -113,11 +114,11 @@ def profile(username):
     # grab the session user's username from db , display user's blogs on thier profile
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    my_blogs = list(mongo.db.blogs.find(
+    blogs = list(mongo.db.blogs.find(
         {"created_by": session["user"]}).sort("_id", -1))
     if session["user"]:
         return render_template(
-            "profile.html", username=username, my_blogs=my_blogs)
+            "profile.html", username=username, blogs=blogs)
 
     return redirect(url_for("login"))
 
