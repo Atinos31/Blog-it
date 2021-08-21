@@ -133,7 +133,7 @@ Any addition features or functionally are out of scope at this stage.
 ### Existing Features
 - User Registration: allows new users to create an account so they can log in.
 - User Log-in: allows existing users to log in using their username or email and password. Passwords are hashed for security reasons. Log-in is required to read , post your own blogs and give feedback. 
-- User Profiles: allow users to tell others about themselves, provide a username,bio.date stamp, and maybe followers. 
+- User Profiles: allow users to tell others about themselves, provide a username, and users can see blogs created by themselves of their profiles 
 - A user must be logged in to edit their own profile. A user cannot edit someone else's profile. 
 - A user must be logged in to view messages and interact with other members.
 - Password reset page- allows users to reset their password incase they had forgotten it.
@@ -143,7 +143,8 @@ Any addition features or functionally are out of scope at this stage.
 
 
 ### admin
-- Admin role - The admin can Create ,Read ,Update and Delete blog categories. 
+- Admin role - The admin can Create ,Read ,Update and Delete blog categories.
+- Admin may also delete blogs written by users that is considered inappropriate. 
 
 ### Features Left to Implement
 - Allow users to upload their own cover image for a blog.
@@ -280,7 +281,7 @@ When a user is logged in and and adds, edits or deletes a blog, a message is fla
 #### Admin
 
 1. As an admin, I want to be able to edit or delete any blogs to remove any inappropriate content.
-When an admin is logged in, the edit and delete buttons are available to them on all blogs allowing then to edit or delete any inappropriate blogs.
+When an admin is logged in, the edit and delete buttons are available to them on all blogs allowing then to edit or delete any inappropriate blogs- an orange delete button is present to show its a blog not written by admin.
 2. As an admin, I want to be able to easily add, edit or delete categories within in the site rather than having to access MongoDB.
 3. When an admin is logged in a new nav item is added called Categories. Clicking on this page allows an admin to view exisiting catgories, as well as edit or delete them. Additionally there is an add category button allowing then to add a new category on the front end.
 
@@ -418,6 +419,7 @@ During the development of this site I encountered a number of different bugs tha
               <a class="waves-effect red btn-small" href="{{ url_for('delete_blog', blog_id=blog._id)}}">Delete</a>
           {% endif %}
   >
+  - categories were being deleted based on alphabetization not considering which category was chosen to be deleted. - solved- fault in the delete_category function
 
 
 
