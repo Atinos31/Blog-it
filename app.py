@@ -1,6 +1,10 @@
 import os
 from flask import (
-    Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for)
+    Flask, g, Blueprint, flash, render_template, redirect, request, session, url_for, abort, jsonify)
+from datetime import datetime
+import json
+import re, time
+import threading
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson import json_util
@@ -165,7 +169,6 @@ def edit_blog(blog_id):
             "category_name": request.form.get("category_name"),
             "title": request.form.get("title"),
             "content": request.form.get("content"),
-            "img_url": request.form.get("img_url"),
             "published_date": request.form.get("published_date"),
             "tags": request.form.get("tags"),
             "read_time": request.form.get("read_time"),
@@ -248,6 +251,24 @@ def logout():
     flash("You have been logged out!")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+# Privacy page
+@app.route("/privacy")
+def privacy():
+    """
+    Returns template for privacy page
+    """
+    return render_template('privacy.html')
+
+
+# Terms page
+@app.route("/terms")
+def terms():
+    """
+    Returns template for terms page
+    """
+    return render_template('terms.html')
 
 
 if __name__ == "__main__":
