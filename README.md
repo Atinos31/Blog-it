@@ -455,15 +455,6 @@ Connecting - via application
 * Select your language/ driver (I used Python 3.6 or later)
 * Copy the connection string and change the details. 
 * Set the cluster name, collection name, URI connection string and password as environmental - see [Configuration](#Configeration) to set up your application configurations
- 
-
-### Flask Mail 
-I have chosen to use Gmail as my mail provider alongside [Flask Mail](https://pythonhosted.org/Flask-Mail/) to send mail to users from within the app. 
-You will need to ensure you set your email provider up  to Allow less secure apps otherwise Gmail will block you being able to send/receive emails through the application.  
-You will also need to enable IMAP as well.  You can find some helpful tips [Flask Mail Help](https://www.twilio.com/blog/2018/03/send-email-programmatically-with-gmail-python-and-flask.html)
-I have used Gmail’s smtp server.  -  see [Configuration](#Configeration) to set up your application configurations
-
-
 ***
 
 
@@ -670,7 +661,7 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
    [girl in a yellow top](https://www.pexels.com/photo/girl-in-yellow-jacket-holding-white-printer-paper-7595160/)
    - homepage image2 is from pexels.com by Tony Schnagly
    [man in brown sweater using mac book pro](https://www.pexels.com/photo/man-in-brown-sweater-using-macbook-pro-5588211/)
-   - blogpost pics
+   
    
 
 ### Acknowledgements
