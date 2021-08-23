@@ -17,12 +17,14 @@
     <li class="collection-item avatar">
       <img src="{{url_for('static', filename='profile_pics/default.png')}}" alt="default avatar" class="circle" >
       <span class="title">{{username}}</span>
-      <p>{{username.location}}
-          <i class="fas fa-map-marker-alt"></i><br>
+      {% for profile in profiles %}{% endfor %}
+      
       </p>
-      <a href="#chat" class="secondary-content"><i class="far fa-comments"></i></a>
+      <p><small>Member since : {{moment(current_time).format('L') }}</small></p>
+      <p><small>Last seen :{{moment(current_time).fromNow() }}</small></p>
     </li>
     </ul>
+    
 <!-- my blogs -->
 <div>
 <h3 class="center-align flow-text"> {{username}}'s Blogs</h3>
@@ -71,5 +73,7 @@
   <li>
     {% endfor %}
 </ul>
+
 {% endif %}
+
 {% endblock %}

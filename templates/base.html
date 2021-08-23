@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00695c"/>
     <meta name="description" content="A place to write, read and connect">
     <meta name="author" content="Sandra Atino">
-    <meta name="keywords" content="writers, bloggers, readers, societyblogs, cultureblogs, travelblogs, foodblogs">
+    <meta name="keywords" content="writers, bloggers, readers,categories, societyblogs, cultureblogs, travelblogs, foodblogs">
+    <link rel="apple-touch-icon" href="/favicon.png">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png')}}">
     {% block styles %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
@@ -18,7 +20,8 @@
     {% else %}
     <title> Welcome to BlogIt</title>
     {% endif %}
-  
+  {{moment.include_moment()}}
+
 </head>
 <body>
   <header>
@@ -100,17 +103,17 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text"> <i class="fas fa-blog"> BlogIt</i></h5>
+          <h4 class="white-text"> <i class="fas fa-blog"> BlogIt</i></h4>
           <p class="grey-text text-lighten-4"><i>
               A place where good ideas find you.</i></p>
         </div>
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text"> Quick Links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="{{ url_for('login') }}">Log In</a></li>
-            <li><a class="grey-text text-lighten-3" href="{{ url_for('register') }}"> Register</a></li>
-            <li><a class="grey-text text-lighten-3" href="{{url_for('home')}}">Home</a></li>
-            <li><a class="grey-text text-lighten-3" href="{{ url_for('privacy')}}">Privacy</a></li>
+            <li><a class="grey-text text-lighten-3" href="{{ url_for('login') }}"  aria-label="opens login page">Log In</a></li>
+            <li><a class="grey-text text-lighten-3" href="{{ url_for('register') }}"  aria-label="opens register page"> Register</a></li>
+            <li><a class="grey-text text-lighten-3" href="{{url_for('home')}}"  aria-label="takes you to the homepage">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="{{ url_for('privacy')}}"  aria-label="opens privacy page">Privacy</a></li>
           </ul>
         </div>
       </div>
@@ -119,10 +122,10 @@
       <div class="container">
         © 2021 Copyright Sandra Atino
         <div class="social white-text text-shadow right">
-          <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="opens facebook page in a new tab"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="opens instagram page in a new tab"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="opens twitter page in a new tab"><i class="fab fa-twitter"></i></a>
+          <a href="https://github.com/Atinos31/" target="_blank" rel="noopener noreferrer" aria-label="opens my github page in a new tab"><i class="fab fa-github"></i></a>
         </div>
       </div>
     </div>

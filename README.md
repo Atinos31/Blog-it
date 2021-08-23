@@ -313,7 +313,8 @@ When an admin is logged in, the edit and delete buttons are available to them on
 - published date
  
  #### login
-4. While logged in, make sure  you can see all blogs and that any blogs that was created by you, now has the edit and delete button on them. you can also view your profile.
+4. While logged in, make sure  you can see all blogs and that any blogs that was created by you, now has the edit and delete button on them.
+- while logged in , make sure you can see blogs written by you on your profile page.
 
 5. While logged in as an admin, make sure you can view all blogs  and blog categories and that all categories blogs now have the edit and delete button. so the admin may delete inappropriate blogs created by users  but may not  edit blogs  created by other users.
 - admin can delete and edit blogs created by him /her
@@ -405,9 +406,19 @@ When the modal has appeared, click the cancel button and ensure the modal closes
 2. Click the delete button again, this time click the delete button. Ensure the category is deleted and the confrimation flash message is visible. Take care to ensure that the correct category has been deleted i.e. the one in which you click the delete button.
 ***
 
+# Lighthouse testing
 ## Accessibility
 In addition to all the above testing I also checked my site with accessibility tools in the inspector.
-- ![accesiblity screen short]()
+- scored 91%
+
+## SEO 
+- scored 100%
+
+## Best practices
+ - scored 93%
+
+## performances
+ -  😢 44%
 
 ## Bugs
 During the development of this site I encountered a number of different bugs that have been now been fixed. A few notable bugs include the following:
@@ -669,3 +680,5 @@ This project is hosted on [Heroku](heroku.com). It's been deployed using the fol
 - Full stack whattsapp group who are happily available to help fix an issue.
 - A final thank to my mentor gbenga_mentor who has advised and guided me through this Milestone 3 project.
 
+## Summary- i had wished to implement several features for this site to make full functional and usefull for the community,
+- But with limited time and also not enough knowledge of how to achieve what i wanted. For now i hope this is enough as i continue to improve on my skills and update this project in the future.
